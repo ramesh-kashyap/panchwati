@@ -216,8 +216,7 @@
                                                                                       placeholder="Enter Amount"
                                                                                       required>
                                                                               </div>
-                                                                              <!-- <h6 class="text-success mx-1">Amount
-                                                                                  Credited Will Be USDT</h6> -->
+                                                                             
                                                                           </div>
                                                                       </div>
                                                                       <div class="row">
