@@ -3,7 +3,7 @@
         ***********************************-->
 
 
-  <div class="content-body">
+        <div class="content-body">
       <!-- row -->
       <div class="container-fluid">
           <div class="row">
@@ -387,9 +387,11 @@
                                           </div>
                                           <div class="right">
                                               @if ($transaction->type == 'credit')
-                                              <span class="amount text-success">+{{ currency() }} {{ number_format($transaction->comm, 2) }}</span>
-                                              @else
                                               <span class="amount text-danger">-{{ currency() }} {{ number_format($transaction->comm, 2) }}</span>
+
+                                              @else
+                                              <span class="amount text-success">+{{ currency() }} {{ number_format($transaction->comm, 2) }}</span>
+
                                               @endif
                                           </div>
                                       </div>

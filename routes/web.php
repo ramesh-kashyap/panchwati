@@ -89,6 +89,8 @@ Route::get('/ChangePass', [App\Http\Controllers\UserPanel\Profile::class, 'chang
 Route::get('/security-password', [App\Http\Controllers\UserPanel\Profile::class, 'ChangeSecurityPass'])->name('user.security-password');
 Route::get('/share', [App\Http\Controllers\UserPanel\Profile::class, 'share'])->name('user.share');
 
+Route::post('/send-verification-code', [App\Http\Controllers\UserPanel\Profile::class, 'sendVerificationCode'])->name('user.send-verification-code');
+
 Route::post('/edit-password', [App\Http\Controllers\UserPanel\Profile::class, 'change_password_post'])->name('user.edit-password');
 Route::get('/BankDetail', [App\Http\Controllers\UserPanel\Profile::class, 'BankDetail'])->name('user.BankDetail');
 Route::post('/bank-update', [App\Http\Controllers\UserPanel\Profile::class, 'bank_profile_update'])->name('user.bank-update');
@@ -117,7 +119,7 @@ Route::any('/confirmDeposit', [App\Http\Controllers\UserPanel\Invest::class, 'co
 
 Route::get('/DepositHistory', [App\Http\Controllers\UserPanel\Invest::class, 'invest_list'])->name('user.DepositHistory');
 Route::get('/deposit-status', [App\Http\Controllers\UserPanel\Invest::class, 'depositStatus'])->name('user.Depositstatus');
-
+Route::get('/withdraw-status', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'withdrawStatus'])->name('user.withdrawalstatus');
 // end invest
 
 // withdraw
@@ -144,6 +146,7 @@ Route::any('/UsrBinaryReport',[App\Http\Controllers\UserPanel\BinaryReport::clas
 
 //bonus
 Route::get('/level-income', [App\Http\Controllers\UserPanel\Bonus::class, 'index'])->name('user.level-income');
+Route::get('/direct-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'direct_bonus'])->name('user.direct-bonus');
 Route::get('/matching-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'cashback_income'])->name('user.matching-bonus');
 Route::get('/reward-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'reward_income'])->name('user.reward-bonus');
 Route::get('/roi-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'roi_income'])->name('user.roi-bonus');

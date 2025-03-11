@@ -309,10 +309,11 @@ public function confirmDeposit(Request $request)
     $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric',
         'account' => 'required',
+        // 'units' => 'required|numeric', // `Changed from FLOAT to required numeric
         'txHash' => 'required|unique:investments,transaction_id',
         'network'=>'required',
     ]);
-
+    // dd($validation);
     if($validation->fails()) {
         Log::info($validation->getMessageBag()->first());
 

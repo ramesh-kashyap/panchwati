@@ -231,6 +231,7 @@ iframe {
                         <ul aria-expanded="false">
 							<li><a href="{{route('user.roi-bonus')}}">ROI Bonus</a></li>
 							<li><a href="{{route('user.level-income')}}">Level Bonus</a></li>
+							<li><a href="{{route('user.direct-bonus')}}">Direct Bonus</a></li>
 						
 
 						</ul>
@@ -254,7 +255,7 @@ iframe {
 						<span class="nav-text">Status</span>
 						</a>
                         <ul aria-expanded="false" class="" style="">
-                            <li><a href="#">Withdrawal Status</a></li>
+                            <li><a href="{{route('user.withdrawalstatus')}}">Withdrawal Status</a></li>
                             <li><a href="{{route('user.Depositstatus')}}">Deposit Status</a></li>
                             <li><a href="#">Ticket Status</a></li>
                             

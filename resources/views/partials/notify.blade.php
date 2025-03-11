@@ -17,7 +17,7 @@
 
     <script>
         "use strict";
-        @foreach ($errors as $error)
+        @foreach($errors as $error)
         iziToast.error({
             message: '{{ __($error) }}',
             position: "topRight"

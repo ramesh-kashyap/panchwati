@@ -21,6 +21,11 @@ use Illuminate\Support\Facades\Hash;
 
 class WithdrawRequest extends Controller
 {
+
+  public function withdrawStatus()
+  {
+      return view('user.withdraw.withdrawalstatus');
+  }
     public function index()
     {
         $user=Auth::user();

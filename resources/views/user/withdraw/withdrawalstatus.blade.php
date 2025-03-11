@@ -32,22 +32,7 @@
                 
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach ($withdraws as $key => $withdraw)
-                                        
-                                    
-                                    <tr>
-                                        <td>{{ $key+1 }}</td>
-                                        <td>{{currency()}} {{ $withdraw->amount }}</td>
-                                        <td>{{currency()}} {{ $withdraw->amount*8/100 }}</td>
-                                        <td>{{currency()}} {{ $withdraw->amount-$withdraw->amount*8/100 }}</td>
-                                        <td>{{ $withdraw->payment_mode}}</td>
-                                        <td>{{ $withdraw->status}}</td>
-                                        <td>{{ $withdraw->created_at}}</td>
-                                        
-                                    </tr>
-                                    @endforeach
-                                </tbody>
+                               
                             </table>
                         </div>
                     </div>

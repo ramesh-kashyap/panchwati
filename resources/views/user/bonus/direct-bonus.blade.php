@@ -1,3 +1,6 @@
+
+
+
 <div class="content-body" style="min-height: 732px;">
     <div class="container-fluid">
 
@@ -7,7 +10,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="ms-2 mb-0 mt-2">Roi Income</h3>
+                        <h3 class="ms-2 mb-0 mt-2">Direct Income</h3>
                         <div class="header-right">
                             <div class="input-group search-area ms-auto d-inline-flex">
                                 <input type="text" class="form-control" placeholder="Search here">
@@ -26,7 +29,6 @@
                                         <th scope="col">amount</th>
                                         <th scope="col">Remark</th>
                                         <th scope="col">payment system</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,5 +63,3 @@
         </div>
     </div>
 </div>
-
-

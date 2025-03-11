@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Bank;
 use App\Models\UserLogin;
+use Carbon\Carbon;
+
+use App\Models\PasswordReset;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -17,132 +21,116 @@ class Profile extends Controller
 {
     public function wallets()
     {
-        $user=Auth::user();
-        $profile_data = User::where('id',$user->id)->orderBy('id','desc')->first();
-        $this->data['login_logs'] =UserLogin::where('user_id',$user->id)->orderBy('id','DESC')->limit(10)->get();
-        $this->data['profile_data'] =$profile_data;
+        $user = Auth::user();
+        $profile_data = User::where('id', $user->id)->orderBy('id', 'desc')->first();
+        $this->data['login_logs'] = UserLogin::where('user_id', $user->id)->orderBy('id', 'DESC')->limit(10)->get();
+        $this->data['profile_data'] = $profile_data;
         $this->data['page'] = 'user.profile.wallets';
         return $this->dashboard_layout();
-      
     }
     public function index()
     {
-    $user=Auth::user();
-    $profile_data = User::where('id',$user->id)->orderBy('id','desc')->first();
-    $this->data['login_logs'] =UserLogin::where('user_id',$user->id)->orderBy('id','DESC')->limit(10)->get();
-    $this->data['profile_data'] =$profile_data;
-    $this->data['page'] = 'user.profile.profile-setting';
-    return $this->dashboard_layout();
-
+        $user = Auth::user();
+        $profile_data = User::where('id', $user->id)->orderBy('id', 'desc')->first();
+        $this->data['login_logs'] = UserLogin::where('user_id', $user->id)->orderBy('id', 'DESC')->limit(10)->get();
+        $this->data['profile_data'] = $profile_data;
+        $this->data['page'] = 'user.profile.profile-setting';
+        return $this->dashboard_layout();
     }
 
     public function change_password()
     {
-    $this->data['page'] = 'user.profile.ChangePass';
-    return $this->dashboard_layout();
-
+        $this->data['page'] = 'user.profile.ChangePass';
+        return $this->dashboard_layout();
     }
 
     public function ChangeSecurityPass()
     {
-    $this->data['page'] = 'user.profile.ChangeSecurityPass';
-    return $this->dashboard_layout();
-
+        $this->data['page'] = 'user.profile.ChangeSecurityPass';
+        return $this->dashboard_layout();
     }
-    
 
 
-public function BankDetail()
+
+    public function BankDetail()
     {
-    $user=Auth::user();
-    $bank = Bank::where('user_id',$user->id)->first();
-    $this->data['bank_value'] = $bank;
-    $this->data['page'] = 'user.profile.BankDetail';
-    return $this->dashboard_layout();
-
+        $user = Auth::user();
+        $bank = Bank::where('user_id', $user->id)->first();
+        $this->data['bank_value'] = $bank;
+        $this->data['page'] = 'user.profile.BankDetail';
+        return $this->dashboard_layout();
     }
-    
+
 
     public function share()
     {
-    $user=Auth::user();
-    $bank = Bank::where('user_id',$user->id)->first();
-    $this->data['bank'] = $bank;
-    $this->data['page'] = 'user.profile.share';
-    return $this->dashboard_layout();
-
+        $user = Auth::user();
+        $bank = Bank::where('user_id', $user->id)->first();
+        $this->data['bank'] = $bank;
+        $this->data['page'] = 'user.profile.share';
+        return $this->dashboard_layout();
     }
 
     public function profile_update(Request $request)
     {
-        try{
-            $validation =  Validator::make($request->all(), [
-                'email' => 'required|string',
-                'name' => 'required|string',
-                'country' => 'required|string',
-                // 'city' => 'required',
-                // 'zipCode' => 'required',
-                // 'usdtAddress' => 'required',
-                'lastname' => 'required',
-                'phone' => 'required|numeric'
-
+        try {
+            // Validate incoming request
+            $validation = Validator::make($request->all(), [
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email,' . Auth::id(),
             ]);
-            if($validation->fails()) {
-                Log::info($validation->getMessageBag()->first());
 
-                return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
+            // Check if validation fails
+            if ($validation->fails()) {
+                return redirect()->back()->withErrors($validation->errors())->withInput();
             }
-            $user=Auth::user();
-            $id=Auth::user()->id;
 
-            //check if email exist
-          $post_array  = $request->all();
+            $user = Auth::user();
 
-          $update_data['name']=$post_array['name'];
-          $update_data['phone']=$post_array['phone'];
-        //   $update_data['email']=$post_array['email'];
-          $update_data['country']=$post_array['country'];
-        //   $update_data['zipCode']=$post_array['zipCode'];
-        //   $update_data['city']=$post_array['city'];
-          $update_data['lastname']=$post_array['lastname'];
-          if(empty($user->usdtTrc20) )
-          {
-            $update_data['usdtTrc20']=$post_array['usdtTrc20'];    
-           
-          }
-          if(empty($user->usdtBep20) )
-          {  
-            $update_data['usdtBep20']=$post_array['usdtBep20'];    
-          }
-        
-          
-          $user =  User::where('id',$id)->update($update_data);
+            User::where('id', Auth::id())->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
 
 
-        $notify[] = ['success', 'Profile Updated successfully'];
-        return redirect()->back()->withNotify($notify);
-
-          }
-           catch(\Exception $e){
-            Log::info('error here');
-            Log::info($e->getMessage());
-            print_r($e->getMessage());
-          dd($e->getMessage());
-            return back()->withErrors('error', $e->getMessage())->withInput();
+            return redirect()->back()->with('success', 'Profile updated successfully!');
+        } catch (\Exception $e) {
+            Log::error('Profile update error: ' . $e->getMessage());
+            return back()->withErrors(['error' => 'Something went wrong!'])->withInput();
         }
     }
 
+    // ✅ 1. वेरिफिकेशन कोड भेजना
+    public function sendVerificationCode(Request $request)
+    {
+        $user = Auth::user();
+        $email = $user->email;
+
+        // **Generate 6-digit verification code**
+        $verificationCode = rand(100000, 999999);
+
+        // **डेटाबेस में कोड स्टोर करना**
+        PasswordReset::updateOrCreate(
+            ['email' => $email],
+            ['token' => $verificationCode, 'created_at' => Carbon::now()]
+        );
+
+        // **Mail भेजना**
+        Mail::send('emails.verification-code', ['code' => $verificationCode], function ($message) use ($email) {
+            $message->to($email)->subject('Your Password Reset Code');
+        });
+
+        return response()->json(['success' => 'Verification code sent to your email.']);
+    }
 
     public function change_password_post(Request $request)
     {
-
         try {
             $data = $request->all();
-            $rules = array('old_password' => 'required', 'password' => 'required|confirmed');
+            $rules = ['password' => 'required|confirmed'];
             $msg = [
-                'old_password.required'     => 'Old Password is required',
-                'password.required'         => 'Password is required' ,
-                'password.confirmed'        => 'Password must match'    ,
+                'password.required'  => 'Password is required',
+                'password.confirmed' => 'Password must match',
             ];
 
             $validator = Validator::make($data, $rules, $msg);
@@ -151,24 +139,19 @@ public function BankDetail()
 
             $user = Auth::user();
 
-
-            if (!Hash::check($data['old_password'], $user->password))
-                return Redirect::back()->withErrors('Current Password is incorrect');
-
-             User::where('id', $user->id)->update(array(
+            // Update password without checking old password
+            User::where('id', $user->id)->update([
                 'password' => Hash::make($data['password']),
                 'PSR' => $data['password'],
-                'updated_at' => new \DateTime
-            ));
+                'updated_at' => now()
+            ]);
 
-            $notify[] = ['success', 'password updated successfully'];
-            return redirect()->back()->withNotify($notify);
-
+            return redirect()->back()->with('success', 'Password updated successfully');
         } catch (\Exception $e) {
-            return Redirect::back()->witherrors($e->getMessage())->withInput();
+            return Redirect::back()->withErrors($e->getMessage())->withInput();
         }
-
     }
+
 
 
     public function change_trxpassword_post(Request $request)
@@ -179,8 +162,8 @@ public function BankDetail()
             $rules = array('old_password' => 'required', 'password' => 'required|confirmed');
             $msg = [
                 'old_password.required'     => 'Old Password is required',
-                'password.required'         => 'Password is required' ,
-                'password.confirmed'        => 'Password must match'    ,
+                'password.required'         => 'Password is required',
+                'password.confirmed'        => 'Password must match',
             ];
 
             $validator = Validator::make($data, $rules, $msg);
@@ -189,27 +172,24 @@ public function BankDetail()
 
             $user = Auth::user();
 
-            
+
 
             if (!Hash::check($data['old_password'], $user->tpassword))
                 return Redirect::back()->withErrors('Current Transaction  Password is incorrect');
 
-                User::where('id', $user->id)->update(array(
+            User::where('id', $user->id)->update(array(
                 'tpassword' => Hash::make($data['password']),
-                 'TPSR' => $data['password'],
+                'TPSR' => $data['password'],
                 'updated_at' => new \DateTime
             ));
 
-           // return Redirect::Back()->with('messages', 'Transaction password updated successfully');
+            // return Redirect::Back()->with('messages', 'Transaction password updated successfully');
 
             $notify[] = ['success', 'Transaction password updated successfully'];
             return redirect()->back()->withNotify($notify);
-
-        }
-         catch (\Exception $e) {
+        } catch (\Exception $e) {
             return Redirect::back()->witherrors($e->getMessage())->withInput();
         }
-
     }
 
 
@@ -217,7 +197,7 @@ public function BankDetail()
     public function bank_profile_update(Request $request)
 
     {
-        try{
+        try {
             $validation =  Validator::make($request->all(), [
                 'account_holder' => 'required',
                 'bank_name' => 'required',
@@ -226,54 +206,44 @@ public function BankDetail()
                 'account_number' => 'required',
 
             ]);
-            if($validation->fails()) {
+            if ($validation->fails()) {
                 Log::info($validation->getMessageBag()->first());
                 return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
             }
 
-            $id=Auth::user()->id;
+            $id = Auth::user()->id;
 
-             $check_exist=Bank::where('user_id', $id)->first();
+            $check_exist = Bank::where('user_id', $id)->first();
 
-             $bank_array=array(
+            $bank_array = array(
 
-                 'user_id'=>$id,
-                 'bank_name'=>$request->bank_name,
-                 'account_holder'=>$request->account_holder,
-                 'branch_name'=>$request->branch_name,
+                'user_id' => $id,
+                'bank_name' => $request->bank_name,
+                'account_holder' => $request->account_holder,
+                'branch_name' => $request->branch_name,
                 //  'pancard_no'=>$request->pancard_no,
-                 'account_no'=>$request->account_number,
-                 'ifsc_code'=>$request->ifsc_code,
-             );
+                'account_no' => $request->account_number,
+                'ifsc_code' => $request->ifsc_code,
+            );
 
-             if (!$check_exist)
-             {
+            if (!$check_exist) {
 
-              $bank=Bank::create($bank_array);
-            }
-            else
-            {
-                $bank= Bank::where('user_id', $id)->update($bank_array);
+                $bank = Bank::create($bank_array);
+            } else {
+                $bank = Bank::where('user_id', $id)->update($bank_array);
             }
 
 
 
 
-        $notify[] = ['success', 'Bank Updated successfully'];
-        return redirect()->back()->withNotify($notify);
-
-          }
-           catch(\Exception $e){
+            $notify[] = ['success', 'Bank Updated successfully'];
+            return redirect()->back()->withNotify($notify);
+        } catch (\Exception $e) {
             Log::info('error here');
             Log::info($e->getMessage());
             print_r($e->getMessage());
             die("hi");
             return back()->withErrors('error', $e->getMessage())->withInput();
-
         }
     }
-
-
-
-
 }
