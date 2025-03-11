@@ -14,25 +14,24 @@
                 <div class="table-parent table-responsive mt-4">
                     <div class="table-search-bar mb-3">
                         <div>
-                        <form action="" method="get">
-                            <div class="row g-3 align-items-end">
-                                <div class="input-box col-lg-3 col-md-3 col-xl-3 col-12">
-                                    <input type="text" name="search" value="{{ @$search }}" class="form-control"
-                                        placeholder="Search for operation" />
-                                </div>
+                            <form action="" method="get">
+                                <div class="row g-3 align-items-end">
+                                    <div class="input-box col-lg-3 col-md-3 col-xl-3 col-12">
+                                        <input type="text" name="search" value="{{ @$search }}" class="form-control"
+                                            placeholder="Search for operation" />
+                                    </div>
 
-                                <div class="input-box col-lg-3 col-md-3 col-xl-3 col-12">
-                                    <input type="text" name="remark" value="" class="form-control"
-                                        placeholder="Remark" />
-                                </div>
+                                    <div class="input-box col-lg-3 col-md-3 col-xl-3 col-12">
+                                        <input type="text" name="remark" value="" class="form-control"
+                                            placeholder="Remark" />
+                                    </div>
 
-                                <div class="input-box col-lg-3 col-md-3 col-xl-3 col-12 mb-1">
-                                <button type="button" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                                    <div class="input-box col-lg-3 col-md-3 col-xl-3 col-12 mb-1">
+                                        <button type="button" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                                    </div>
 
                                 </div>
-                              
-                            </div>
-                        </form>
+                            </form>
                         </div>
                     </div>
                     <table class="table table-striped mb-5">
@@ -40,7 +39,7 @@
                             <tr>
                                 <th scope="col">Date</th>
                                 <th scope="col">amount</th>
-                                <th scope="col">operation</th>
+                                <th scope="col">Remark</th>
                                 <th scope="col">payment system</th>
                             </tr>
                         </thead>
