@@ -45,7 +45,6 @@ class WithdrawRequest extends Controller
     {
 
         try{
-
              $validation =  Validator::make($request->all(), [
             'amount' => 'required|numeric|min:10',
             'paymentMode' => 'required',    
@@ -59,7 +58,7 @@ class WithdrawRequest extends Controller
         }
 
         $user=Auth::user();
-        
+
         
          $notify[] = ['error', 'something wrong!'];
               return redirect()->back()->withNotify($notify);
@@ -83,13 +82,15 @@ class WithdrawRequest extends Controller
         
         $password= $request->transaction_password;
         $balance=Auth::user()->available_balance();
-        if ($request->paymentMode=="USDT.TRC20") 
+       
+
+        if ($request->paymentMode=="USDT.BEP20") 
         {
-          $account =  $user->usdtTrc20;
+            $account =  $user->usdtBep20;
         }
         else
         {
-          $account =  $user->usdtBep20;
+          $account =  $user->usdtTrc20;
         }
        
         if ($balance>=$request->amount)

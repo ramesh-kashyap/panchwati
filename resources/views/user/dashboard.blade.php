@@ -125,11 +125,11 @@
                                                                       data-bs-dismiss="modal"
                                                                       aria-label="Close"></button>
                                                               </div>
+                                                              
                                                               <form id="depositForm" method="post"
                                                                   action="{{route('user.confirmDeposit')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
-                                                                      <!-- Your deposit form content goes here -->
                                                                       {{-- <div class="mb-1">Deposit may require 2 to 5
                                                                           Minutes to reflect in your funding wallet.</div> --}}
                                                                       <div class="row">
@@ -176,6 +176,12 @@
                                                           </div>
                                                       </div>
                                                   </div>
+
+                                                  @if ($errors->any())
+     @foreach ($errors->all() as $error)
+         <div>{{$error}}</div>
+     @endforeach
+ @endif
                                                   <button type="button" class="btn btn-rounded btn-primary"
                                                       data-bs-toggle="modal" data-bs-target="#Withdraw">Withdraw
                                                       Funds</button>
@@ -196,6 +202,12 @@
                                                                   action="{{route('user.Withdraw-Request')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
+
+                                                                  @if ($errors->any())
+     @foreach ($errors->all() as $error)
+         <div>{{$error}}</div>
+     @endforeach
+ @endif
                                                                       {{-- <div class="mb-1">Withdrawal may take 24 to 48
                                                                           hours to reflect in your funding wallet.</div> --}}
                                                                       <div class="row">
@@ -211,8 +223,8 @@
                                                                                       placeholder="Enter Amount"
                                                                                       required>
                                                                               </div>
-                                                                              <h6 class="text-success mx-1">Amount
-                                                                                  Credited Will Be USDT</h6>
+                                                                              <!-- <h6 class="text-success mx-1">Amount
+                                                                                  Credited Will Be USDT</h6> -->
                                                                           </div>
                                                                       </div>
                                                                       <div class="row">
@@ -225,7 +237,7 @@
                                                                                       name="paymentMode"
                                                                                       class="default-select form-control wide">
 
-                                                                                      <option value="USDT-TRC20">
+                                                                                      <option value="USDT.TRC20">
                                                                                           USDT(TRC-20)</option>
                                                                                       <option value="USDT-BEP20">
                                                                                           USDT(BEP-20)</option>
@@ -254,8 +266,6 @@
 
 
 
-                                                                      <h6 class="text-danger mx-1">Minimum
-                                                                          Withdrawal is 10 USDT</h6>
 
                                                                   </div>
                                                                   <div class="modal-footer">
