@@ -40,7 +40,6 @@ class WithdrawRequest extends Controller
         return $this->dashboard_layout();
     }
 
-//dhshds
     public function WithdrawRequest(Request $request)
     {
 
