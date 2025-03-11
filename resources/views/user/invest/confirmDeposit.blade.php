@@ -161,7 +161,6 @@ integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="ano
 
     }
 
-    // Set the interval to 5 minutes (300,000 milliseconds)
     const interval = 2000;
 
     // Call the function immediately and then at the specified interval

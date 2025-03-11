@@ -192,8 +192,8 @@
                                                                       data-bs-dismiss="modal"
                                                                       aria-label="Close"></button>
                                                               </div>
-                                                              <form id="withdrawForm" method="POST"
-                                                                  action="">
+                                                              <form id="withdrawForm"  method="POST"
+                                                                  action="{{route('user.Withdraw-Request')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
                                                                       {{-- <div class="mb-1">Withdrawal may take 24 to 48
@@ -222,7 +222,7 @@
                                                                                       class="form-label">Select
                                                                                       Network:</label>
                                                                                   <select id="network"
-                                                                                      name="withdraw_method"
+                                                                                      name="paymentMode"
                                                                                       class="default-select form-control wide">
 
                                                                                       <option value="USDT-TRC20">

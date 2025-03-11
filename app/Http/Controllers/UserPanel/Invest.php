@@ -305,7 +305,6 @@ public function confirmDeposit(Request $request)
   public function fundActivation(Request $request)
     {
 
-      // dd("hiii");
   try{
     $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric',
