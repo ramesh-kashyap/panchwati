@@ -3,7 +3,7 @@
         ***********************************-->
 
 
-  <div class="content-body">
+        <div class="content-body">
       <!-- row -->
       <div class="container-fluid">
           <div class="row">
@@ -125,11 +125,13 @@
                                                                       data-bs-dismiss="modal"
                                                                       aria-label="Close"></button>
                                                               </div>
-
+                                                              
                                                               <form id="depositForm" method="post"
                                                                   action="{{route('user.confirmDeposit')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
+                                                                       <!-- Laravel Validation Errors -->
+         
                                                                       {{-- <div class="mb-1">Deposit may require 2 to 5
                                                                           Minutes to reflect in your funding wallet.</div> --}}
                                                                       <div class="row">
@@ -154,16 +156,15 @@
                                                                                       name="network" id="network">
 
                                                                                       <option value="usdtBep20">
-                                                                                          USDT.BEP20 </option>
+                                                                                      USDT.BEP20 </option>
                                                                                       <option value="bank_transfer">
-                                                                                          BANK TRANSFER</option>
+                                                                                        BANK TRANSFER</option>
                                                                                   </select>
                                                                               </div>
                                                                               <h6 class="text-danger mx-1">Minimum
                                                                                   Deposit is 1 Unit</h6>
                                                                           </div>
                                                                       </div>
-                                                                      <!-- End of deposit form content -->
                                                                   </div>
                                                                   <div class="modal-footer">
                                                                       <button type="button"
@@ -178,10 +179,10 @@
                                                   </div>
 
                                                   @if ($errors->any())
-                                                  @foreach ($errors->all() as $error)
-                                                  <div>{{$error}}</div>
-                                                  @endforeach
-                                                  @endif
+     @foreach ($errors->all() as $error)
+         <div>{{$error}}</div>
+     @endforeach
+ @endif
                                                   <button type="button" class="btn btn-rounded btn-primary"
                                                       data-bs-toggle="modal" data-bs-target="#Withdraw">Withdraw
                                                       Funds</button>
@@ -198,16 +199,16 @@
                                                                       data-bs-dismiss="modal"
                                                                       aria-label="Close"></button>
                                                               </div>
-                                                              <form id="withdrawForm" method="POST"
+                                                              <form id="withdrawForm"  method="POST"
                                                                   action="{{route('user.Withdraw-Request')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
 
-                                                                      @if ($errors->any())
-                                                                      @foreach ($errors->all() as $error)
-                                                                      <div>{{$error}}</div>
-                                                                      @endforeach
-                                                                      @endif
+                                                                  @if ($errors->any())
+     @foreach ($errors->all() as $error)
+         <div>{{$error}}</div>
+     @endforeach
+ @endif
                                                                       {{-- <div class="mb-1">Withdrawal may take 24 to 48
                                                                           hours to reflect in your funding wallet.</div> --}}
                                                                       <div class="row">
@@ -237,10 +238,10 @@
                                                                                       name="paymentMode"
                                                                                       class="default-select form-control wide">
 
-                                                                                      <option value="USDT.TRC20">
+                                                                                      <option value="USDT.BEP20">
                                                                                           USDT(TRC-20)</option>
-                                                                                      <option value="USDT-BEP20">
-                                                                                          USDT(BEP-20)</option>
+                                                                                      <option value="Bank detail">
+                                                                                          BANK DETAIL</option>
                                                                                   </select>
                                                                               </div>
 
@@ -395,9 +396,11 @@
                                           </div>
                                           <div class="right">
                                               @if ($transaction->type == 'credit')
-                                              <span class="amount text-success">+{{ currency() }} {{ number_format($transaction->comm, 2) }}</span>
-                                              @else
                                               <span class="amount text-danger">-{{ currency() }} {{ number_format($transaction->comm, 2) }}</span>
+
+                                              @else
+                                              <span class="amount text-success">+{{ currency() }} {{ number_format($transaction->comm, 2) }}</span>
+
                                               @endif
                                           </div>
                                       </div>

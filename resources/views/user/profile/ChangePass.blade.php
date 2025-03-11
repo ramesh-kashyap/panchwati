@@ -21,29 +21,37 @@
                             </ul>
                         </div>
                         @endif
-                        <form method="post" action="{{ route('user.edit-password') }}">
+                        <form method="POST" action="{{ route('user.edit-password') }}">
                             @csrf
 
+                            <!-- New Password Field -->
                             <div class="mb-3">
-                                <label class="form-label">New Password-</label>
-                                <input type="text" class="form-control" placeholder="Enter New Password" name="email">
-
+                                <label class="form-label">New Password</label>
+                                <input type="password" class="form-control" placeholder="Enter New Password" name="password" required>
                             </div>
-                            <input class="mt-12 form-control" type="hidden" readonly id="inputemail" readonly value="{{ Auth::user()->email }}" placeholder="Enter your email">
 
+                            <!-- Confirm Password Field -->
                             <div class="mb-3">
-                                <label class="form-label">Confirm Password-</label>
-                                <input type="text" class="form-control" placeholder="Enter Confirm Password" name="phone">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" placeholder="Confirm New Password" name="password_confirmation" required>
+                            </div>
 
-                            </div>
+                            <!-- Hidden Email Field -->
+                            <input type="hidden" id="inputemail" value="{{ Auth::user()->email }}" name="email">
+
+                            <!-- Verification Code Field -->
                             <div class="mb-3">
-                                <label for="" class="form-label">Verification Code</label>
-                                <input type="text" id="" name="code" class="form-control input-default" placeholder="Verification Code" required>
-                                <div class="first-code-send text-primary" style="position: absolute; top: 74.5%; right: 43px; cursor:pointer;font-size: 15px;">@lang('Get Code')</div>
-                                <span class="resend-btn code-btn text-primary" style="position: absolute; top: 74.5%; right: 43px; cursor: pointer;display:none;">@lang('Resend Code')</span>
+                                <label class="form-label">Verification Code</label>
+                                <input type="text" class="form-control" name="code" placeholder="Enter Verification Code" required>
+
+                                <!-- Get Code / Resend Code buttons -->
+                                <div class="first-code-send text-primary" style="cursor: pointer; font-size: 15px; margin-top: 10px;">Get Code</div>
+                                <span class="resend-btn code-btn text-primary" style="cursor: pointer; display: none; margin-top: 10px;">Resend Code</span>
                             </div>
+
                             <button type="submit" class="btn btn-primary mt-3">Update</button>
                         </form>
+
                     </div>
                 </div>
             </div>

@@ -89,6 +89,8 @@ Route::get('/ChangePass', [App\Http\Controllers\UserPanel\Profile::class, 'chang
 Route::get('/security-password', [App\Http\Controllers\UserPanel\Profile::class, 'ChangeSecurityPass'])->name('user.security-password');
 Route::get('/share', [App\Http\Controllers\UserPanel\Profile::class, 'share'])->name('user.share');
 
+Route::post('/send-verification-code', [App\Http\Controllers\UserPanel\Profile::class, 'sendVerificationCode'])->name('user.send-verification-code');
+
 Route::post('/edit-password', [App\Http\Controllers\UserPanel\Profile::class, 'change_password_post'])->name('user.edit-password');
 Route::get('/BankDetail', [App\Http\Controllers\UserPanel\Profile::class, 'BankDetail'])->name('user.BankDetail');
 Route::post('/bank-update', [App\Http\Controllers\UserPanel\Profile::class, 'bank_profile_update'])->name('user.bank-update');
