@@ -135,11 +135,11 @@
                                                                       <div class="row">
                                                                           <div class="col-md-12">
                                                                               <div class="mb-3">
-                                                                                  <label class="form-label">Enter Amount
-                                                                                      in USDT:</label>
+                                                                                  <label class="form-label">Enter Unit
+                                                                                      :</label>
                                                                                   <input type="number"
                                                                                       class="form-control input-default"
-                                                                                      placeholder="Enter Amount"
+                                                                                      placeholder="Enter Unit"
                                                                                       name="amount" required>
                                                                               </div>
                                                                           </div>
@@ -153,14 +153,14 @@
                                                                                       class="default-select form-control wide"
                                                                                       name="network" id="network">
 
-                                                                                      <option value="USDT_TRX">
-                                                                                          USDT(TRC-20) </option>
-                                                                                      <option value="USDT_BSC">
-                                                                                          USDT(BEP-20) </option>
+                                                                                      <option value="usdtBep20">
+                                                                                      USDT.BEP20 </option>
+                                                                                      <option value="bank_transfer">
+                                                                                        BANK TRANSFER</option>
                                                                                   </select>
                                                                               </div>
                                                                               <h6 class="text-danger mx-1">Minimum
-                                                                                  Deposit is 50 USDT</h6>
+                                                                                  Deposit is 1 Unit</h6>
                                                                           </div>
                                                                       </div>
                                                                       <!-- End of deposit form content -->

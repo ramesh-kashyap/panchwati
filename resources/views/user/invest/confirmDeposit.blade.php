@@ -9,85 +9,100 @@
                 </div>
                 <div class="card-body">
                     <div>
-                      
+                    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 
                         <form method="POST" action="{{ route('user.fundActivation') }}">
                             @csrf
+                        
+                            <div class="mb-3 text-center">
+                <h4>Deposit</h4>
+
+                @if($network == 'usdtBep20')
+                    <div class="d-flex justify-content-center">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ $network }}&format=png" class="img-fluid">
+                    </div>
+                @endif
+            </div>
+
+ @if($network == 'bank_transfer' && $bankDetails)
+<div style="background-color:#f6fbf8 !important" class="mb-3 p-3 border rounded bg-light">
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label"> Company Ac. Number</label>
+            <input type="text" class="form-control" name="account_no" readonly value="{{ $bankDetails->account_no }}">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">IFSC Code</label>
+            <input type="text" class="form-control" name="ifsc_code" readonly value="{{ $bankDetails->ifsc_code }}">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label class="form-label">Branch Name</label>
+            <input type="text" class="form-control" name="branch_name" readonly value="{{ $bankDetails->branch_name }}">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label class="form-label">Bank Name</label>
+            <input type="text" class="form-control" name="bank_name" readonly value="{{ $bankDetails->bank_name }}">
+        </div>
+    </div>
+</div>
+@endif
+ <div class="mb-3">
+    <label class="form-label">Amount(1 Unit = {{currency()}} 10000)</label>
+    <input type="number" class="form-control" value="{{ $amount }}" readonly name="amount">
+</div>
+
+@if($network == 'usdtBep20' && $network)
+<div class="mb-3">
+    <label class="form-label">Currency</label>
+    <input type="text" class="form-control" name="network" readonly value="{{ strtoupper($network) }}">
+</div>
+@endif
+
+
+@if($network == 'usdtBep20' && $wallet_address)
+<div class="mb-3">
+    <label class="form-label">Wallet Address</label>
+    <input type="text" class="form-control" name="wallet_address" readonly value="{{ $wallet_address }}">
+</div>
+@endif
+
+
 
                             <div class="mb-3">
-                                <label class="form-label">Amount</label>
-                                <input type="text" class="form-control" readonly placeholder=""  name="amount" >
-
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Account Number</label>
-                                <input type="text" class="form-control" readonly placeholder=""  name="amount" >
-
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">IFSC Code</label>
-                                <input type="text" class="form-control" readonly placeholder=""  name="amount" >
-
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Account Holder</label>
-                                <input type="text" class="form-control" readonly placeholder="" name="amount" >
+                                <label class="form-label">Transaction Hash</label>
+                                <input type="text" class="form-control"  placeholder="enter transaction id" name="txHash" >
 
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Upload Reciept</label>
-                                <input type="file" class="form-control" readonly placeholder="" value="{{ $amount }}" name="amount" >
+                                <input type="file" class="form-control"  placeholder="upload reciep" value="" name="account" >
 
                             </div>
-                            <div class="mb-3">
-                               
-
-                                <label class="form-label">Wallet Address   <svg  onclick="copyToClipboard()" class="copy-btn" width="20" height="20"
-                                    viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                    style=""
-                                    title="Copy wallet address">
-                                    <g opacity="0.6">
-                                        <path
-                                            d="M14.1666 11.1673V13.6673C14.1666 17.0007 12.8333 18.334 9.49996 18.334H6.33329C2.99996 18.334 1.66663 17.0007 1.66663 13.6673V10.5007C1.66663 7.16732 2.99996 5.83398 6.33329 5.83398H8.83329"
-                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M14.1663 11.1673H11.4997C9.49967 11.1673 8.83301 10.5007 8.83301 8.50065V5.83398L14.1663 11.1673Z"
-                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M9.66638 1.66602H12.9997" stroke="#fff" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path
-                                            d="M5.83337 4.16602C5.83337 2.78268 6.95004 1.66602 8.33337 1.66602H10.5167"
-                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M18.3337 6.66602V11.8243C18.3337 13.116 17.2837 14.166 15.9921 14.166"
-                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M18.3334 6.66602H15.8334C13.9584 6.66602 13.3334 6.04102 13.3334 4.16602V1.66602L18.3334 6.66602Z"
-                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </g>
-                                </svg></label>
-                                <input id="wallet_address1" type="text" class="form-control"
-                                value="{{ $network }}" readonly style="padding-right: 30px;">
-
-                              
-
                             
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Currency-</label>
-
-                             <input type="text" class="form-control" placeholder="Enter Withdraw Method" name="paymentMode" readonly value="{{($network=="USDT_TRX")? "USDT(TRC20)" :'USDT(BEP20)'}}">
-                                <input type="hidden" class="form-control"  name="amount"  value="{{ $amount }}">
-                            </div>
-                            <div class="mb-3">
-                                <h4>Deposit-</h4>
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ $network }}&format=png">
-
-                            </div>
+                            <div  class="text-center">
+                <button style="padding:0.5rem 10rem"  type="submit" class="btn btn-primary mt-3">Deposit</button>
+            </div>
                           
                         </form>
                     </div>

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class Invest extends Controller
 {
@@ -125,9 +126,25 @@ class Invest extends Controller
 
 public function confirmDeposit(Request $request)
 {
+  $network = $request->network;
+    $amount = $request->amount;
+    
+    if ($network == "usdtBep20") {
+        $walletAddress = DB::table('general_settings')->value($network);
+        $bankDetails = null; 
+    } elseif ($network == "bank_transfer") {
+        $walletAddress = null; 
+        $bankDetails = DB::table('general_settings')->select('account_no', 'ifsc_code', 'branch_name', 'bank_name')->first();
+    } else {
+        $walletAddress = null;
+        $bankDetails = null;
+    }
+
     return view('user.invest.confirmDeposit', [
-        'amount' => $request->amount,
-        'network' => $request->network
+        'amount' => $amount*10000,
+        'network' => $network,
+        'wallet_address' => $walletAddress,
+        'bankDetails' => $bankDetails
     ]);
 }
 
@@ -285,13 +302,13 @@ public function confirmDeposit(Request $request)
 //  }
 
 
-  public function fundActivation2(Request $request)
+  public function fundActivation(Request $request)
     {
 
       // dd("hiii");
   try{
     $validation =  Validator::make($request->all(), [
-        'amount' => 'required|numeric|min:20',
+        'amount' => 'required|numeric',
         'account' => 'required',
         'txHash' => 'required|unique:investments,transaction_id',
     ]);
@@ -299,54 +316,23 @@ public function confirmDeposit(Request $request)
     if($validation->fails()) {
         Log::info($validation->getMessageBag()->first());
 
-        return redirect()->route('user.autoinvest')->withErrors($validation->getMessageBag()->first())->withInput();
+        return redirect()->route('user.dashboard')->withErrors($validation->getMessageBag()->first())->withInput();
     }
-
- 
 
        $user=Auth::user();
        
-       $plan="1";
-
        $user_detail=User::where('username',$user->username)->orderBy('id','desc')->limit(1)->first();
        $invest_check=Investment::where('user_id',$user_detail->id)->where('status','!=','Decline')->orderBy('id','desc')->limit(1)->first();
        $invoice = substr(str_shuffle("0123456789"), 0, 7);
        $joining_amt = $request->amount;
-        $plan ='BEGINNER';
-       if ($joining_amt>=50 && $joining_amt<=199) 
-       {
-        $plan ='BEGINNER';
-       }
-       elseif($joining_amt>=200 && $joining_amt<=499)
-       {
-        $plan ='BRONZE';
-       }
-       elseif($joining_amt>=500 && $joining_amt<=1999)
-       {
-        $plan ='SILVER';
-       }
-       elseif($joining_amt>=2000 && $joining_amt<=3999)
-       {
-        $plan ='GOLD';
-       }
-
-       elseif($joining_amt>=4000 && $joining_amt<=4999)
-       {
-        $plan ='PLATINUM';
-       }
-
-       elseif($joining_amt>=5000)
-       {
-        $plan ='PLATINUM';
-       }
-      
+        
 
 
       $last_package = ($invest_check)?$invest_check->amount:0;
 
         
            $data = [
-                'plan' => $plan,
+                'plan' => $joining_amt,
                 'transaction_id' =>$request->txHash,
                 'user_id' => $user_detail->id,
                 'user_id_fk' => $user_detail->username,
@@ -354,7 +340,7 @@ public function confirmDeposit(Request $request)
                 'payment_mode' =>'USDT.BEP20',
                 'status' => 'Active',
                 'slip' => $request->account,
-                'percentage'=>$request->plan,
+                'percentage'=>0,
                 'sdate' => Date("Y-m-d"),
                 'active_from' => $user->username,
             ];
@@ -371,11 +357,11 @@ public function confirmDeposit(Request $request)
             $user_update=array('package'=>$total,'active_status'=>'Active');
           User::where('id',$user_detail->id)->update($user_update); 
          }
-         add_direct_income($user_detail->id,$request->amount);
+        //  add_direct_income($user_detail->id,$request->amount);
          
 
         $notify[] = ['success','Deposit successfully'];
-        return redirect()->route('user.autoinvest')->withNotify($notify);
+        return redirect()->route('user.dashboard')->withNotify($notify);
 
    
 
