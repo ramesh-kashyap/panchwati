@@ -9,27 +9,7 @@
                 </div>
                 <div class="card-body">
                     <div>
-                    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
-
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+      
 
 
                         <form method="POST" action="{{ route('user.fundActivation') }}">
@@ -45,7 +25,7 @@
                 @endif
             </div>
 
- @if($network == 'bank_transfer' && $bankDetails)
+ @if($network == 'bank-transfer' && $bankDetails)
 <div style="background-color:#f6fbf8 !important" class="mb-3 p-3 border rounded bg-light">
     <div class="row">
         <div class="col-md-6">
@@ -72,12 +52,10 @@
     <input type="number" class="form-control" value="{{ $amount }}" readonly name="amount">
 </div>
 
-@if($network == 'usdtBep20' && $network)
 <div class="mb-3">
     <label class="form-label">Currency</label>
-    <input type="text" class="form-control" name="network" readonly value="{{ strtoupper($network) }}">
+    <input type="text" class="form-control" name="network" readonly value="{{strtoupper($network) }}">
 </div>
-@endif
 
 
 @if($network == 'usdtBep20' && $wallet_address)

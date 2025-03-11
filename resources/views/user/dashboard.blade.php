@@ -157,7 +157,7 @@
 
                                                                                       <option value="usdtBep20">
                                                                                       USDT.BEP20 </option>
-                                                                                      <option value="bank_transfer">
+                                                                                      <option value="bank-transfer">
                                                                                         BANK TRANSFER</option>
                                                                                   </select>
                                                                               </div>
@@ -178,11 +178,7 @@
                                                       </div>
                                                   </div>
 
-                                                  @if ($errors->any())
-     @foreach ($errors->all() as $error)
-         <div>{{$error}}</div>
-     @endforeach
- @endif
+      
                                                   <button type="button" class="btn btn-rounded btn-primary"
                                                       data-bs-toggle="modal" data-bs-target="#Withdraw">Withdraw
                                                       Funds</button>
@@ -204,11 +200,7 @@
                                                                   @csrf
                                                                   <div class="modal-body">
 
-                                                                  @if ($errors->any())
-     @foreach ($errors->all() as $error)
-         <div>{{$error}}</div>
-     @endforeach
- @endif
+   
                                                                       {{-- <div class="mb-1">Withdrawal may take 24 to 48
                                                                           hours to reflect in your funding wallet.</div> --}}
                                                                       <div class="row">
@@ -240,8 +232,8 @@
 
                                                                                       <option value="USDT.BEP20">
                                                                                           USDT(TRC-20)</option>
-                                                                                      <option value="Bank detail">
-                                                                                          BANK DETAIL</option>
+                                                                                      <option value="BANK TRANSFER">
+                                                                                      BANK  TRANSFER </option>
                                                                                   </select>
                                                                               </div>
 

@@ -121,6 +121,7 @@ Route::get('/deposit-status', [App\Http\Controllers\UserPanel\Invest::class, 'de
 // end invest
 
 // withdraw
+
 Route::get('/withdraw-info', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'withdrawInfo'])->name('user.withdrawinfo');
 Route::get('/debitReport', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'debitReport'])->name('user.debitReport');
 Route::get('/Withdraw', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'index'])->name('user.Withdraw');
