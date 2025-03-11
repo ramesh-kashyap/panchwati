@@ -129,6 +129,7 @@
                                                                   action="{{route('user.confirmDeposit')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
+                                                                      <!-- Your deposit form content goes here -->
                                                                       {{-- <div class="mb-1">Deposit may require 2 to 5
                                                                           Minutes to reflect in your funding wallet.</div> --}}
                                                                       <div class="row">
@@ -152,16 +153,17 @@
                                                                                       class="default-select form-control wide"
                                                                                       name="network" id="network">
 
-                                                                                      <option value="USDT_TRX">
-                                                                                          USDT(TRC-20) </option>
-                                                                                      <option value="USDT_BSC">
-                                                                                          USDT(BEP-20) </option>
+                                                                                      <option value="usdtBep20">
+                                                                                      USDT.BEP20 </option>
+                                                                                      <option value="bank_transfer">
+                                                                                        BANK TRANSFER</option>
                                                                                   </select>
                                                                               </div>
                                                                               <h6 class="text-danger mx-1">Minimum
                                                                                   Deposit is 1 Unit</h6>
                                                                           </div>
                                                                       </div>
+                                                                      <!-- End of deposit form content -->
                                                                   </div>
                                                                   <div class="modal-footer">
                                                                       <button type="button"
@@ -223,10 +225,10 @@
                                                                                       name="paymentMode"
                                                                                       class="default-select form-control wide">
 
-                                                                                      <option value="USDT.TRC20">
+                                                                                      <option value="USDT-TRC20">
                                                                                           USDT(TRC-20)</option>
-                                                                                      <option value="Bank detail">
-                                                                                          BANK DETAIL</option>
+                                                                                      <option value="USDT-BEP20">
+                                                                                          USDT(BEP-20)</option>
                                                                                   </select>
                                                                               </div>
 

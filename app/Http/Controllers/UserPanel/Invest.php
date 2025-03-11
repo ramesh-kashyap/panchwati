@@ -309,9 +309,10 @@ public function confirmDeposit(Request $request)
     $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric',
         'account' => 'required',
+        // 'units' => 'required|numeric', // `Changed from FLOAT to required numeric
         'txHash' => 'required|unique:investments,transaction_id',
     ]);
-
+    // dd($validation);
     if($validation->fails()) {
         Log::info($validation->getMessageBag()->first());
 
@@ -336,6 +337,7 @@ public function confirmDeposit(Request $request)
                 'user_id' => $user_detail->id,
                 'user_id_fk' => $user_detail->username,
                 'amount' => $request->amount,
+                // 'units' => $request->units,
                 'payment_mode' =>'USDT.BEP20',
                 'status' => 'Active',
                 'slip' => $request->account,
