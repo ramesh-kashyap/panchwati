@@ -39,7 +39,7 @@ class Profile extends Controller
     public function change_password()
     {
     $this->data['page'] = 'user.profile.ChangePass';
-    return $this->dashboard_layout();
+    return $this->dashboard_layout();   
 
     }
 
@@ -73,64 +73,35 @@ public function BankDetail()
 
     }
 
-    public function profile_update(Request $request)
-    {
-        try{
-            $validation =  Validator::make($request->all(), [
-                'email' => 'required|string',
-                'name' => 'required|string',
-                'country' => 'required|string',
-                // 'city' => 'required',
-                // 'zipCode' => 'required',
-                // 'usdtAddress' => 'required',
-                'lastname' => 'required',
-                'phone' => 'required|numeric'
-
-            ]);
-            if($validation->fails()) {
-                Log::info($validation->getMessageBag()->first());
-
-                return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
-            }
-            $user=Auth::user();
-            $id=Auth::user()->id;
-
-            //check if email exist
-          $post_array  = $request->all();
-
-          $update_data['name']=$post_array['name'];
-          $update_data['phone']=$post_array['phone'];
-        //   $update_data['email']=$post_array['email'];
-          $update_data['country']=$post_array['country'];
-        //   $update_data['zipCode']=$post_array['zipCode'];
-        //   $update_data['city']=$post_array['city'];
-          $update_data['lastname']=$post_array['lastname'];
-          if(empty($user->usdtTrc20) )
-          {
-            $update_data['usdtTrc20']=$post_array['usdtTrc20'];    
-           
-          }
-          if(empty($user->usdtBep20) )
-          {  
-            $update_data['usdtBep20']=$post_array['usdtBep20'];    
-          }
+        public function profile_update(Request $request)
+        {
+            try {
+                // Validate incoming request
+                $validation = Validator::make($request->all(), [
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|email|unique:users,email,' . Auth::id(),
+                ]);
         
-          
-          $user =  User::where('id',$id)->update($update_data);
-
-
-        $notify[] = ['success', 'Profile Updated successfully'];
-        return redirect()->back()->withNotify($notify);
-
-          }
-           catch(\Exception $e){
-            Log::info('error here');
-            Log::info($e->getMessage());
-            print_r($e->getMessage());
-          dd($e->getMessage());
-            return back()->withErrors('error', $e->getMessage())->withInput();
+                // Check if validation fails
+                if ($validation->fails()) {
+                    return redirect()->back()->withErrors($validation->errors())->withInput();
+                }
+        
+                $user = Auth::user();
+        
+                User::where('id', Auth::id())->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                ]);
+                
+        
+                return redirect()->back()->with('success', 'Profile updated successfully!');
+            } catch (\Exception $e) {
+                Log::error('Profile update error: ' . $e->getMessage());
+                return back()->withErrors(['error' => 'Something went wrong!'])->withInput();
+            }
         }
-    }
+        
 
 
     public function change_password_post(Request $request)

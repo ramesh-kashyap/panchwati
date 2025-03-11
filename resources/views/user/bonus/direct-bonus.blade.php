@@ -1,19 +1,20 @@
 <!-- main -->
 <div class="content-body" style="min-height: 732px;">
     <div class="container-fluid">
+
         <div class="row">
             <div class="col">
                 <div class="header-text-full">
-                    <h3 class="ms-2 mb-0 mt-2">Roi Income</h3>
+                    <h3 class="ms-2 mb-0 mt-2">Direct Income</h3>
                 </div>
             </div>
         </div>
         <div class="main row">
             <div class="col-12">
+
                 <!-- table -->
                 <div class="table-parent table-responsive mt-4">
                     <div class="table-search-bar mb-3">
-                        <div>
                         <form action="" method="get">
                             <div class="row g-3 align-items-end">
                                 <div class="input-box col-lg-3 col-md-3 col-xl-3 col-12">
@@ -33,8 +34,8 @@
                               
                             </div>
                         </form>
-                        </div>
                     </div>
+
                     <table class="table table-striped mb-5">
                         <thead>
                             <tr>

@@ -154,7 +154,7 @@
                                                                                       name="network" id="network">
 
                                                                                       <option value="USDT_TRX">
-                                                                                          USDT(TRC-20) </option>
+                                                                                          Bank Transfer </option>
                                                                                       <option value="USDT_BSC">
                                                                                           USDT(BEP-20) </option>
                                                                                   </select>

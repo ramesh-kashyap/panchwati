@@ -231,6 +231,7 @@ iframe {
                         <ul aria-expanded="false">
 							<li><a href="{{route('user.roi-bonus')}}">ROI Bonus</a></li>
 							<li><a href="{{route('user.level-income')}}">Level Bonus</a></li>
+							<li><a href="{{route('user.direct-bonus')}}">Direct Bonus</a></li>
 						
 
 						</ul>
