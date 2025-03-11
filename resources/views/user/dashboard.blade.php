@@ -125,7 +125,7 @@
                                                                       data-bs-dismiss="modal"
                                                                       aria-label="Close"></button>
                                                               </div>
-                                                              
+
                                                               <form id="depositForm" method="post"
                                                                   action="{{route('user.confirmDeposit')}}">
                                                                   @csrf
@@ -154,9 +154,9 @@
                                                                                       name="network" id="network">
 
                                                                                       <option value="usdtBep20">
-                                                                                      USDT.BEP20 </option>
+                                                                                          USDT.BEP20 </option>
                                                                                       <option value="bank_transfer">
-                                                                                        BANK TRANSFER</option>
+                                                                                          BANK TRANSFER</option>
                                                                                   </select>
                                                                               </div>
                                                                               <h6 class="text-danger mx-1">Minimum
@@ -178,10 +178,10 @@
                                                   </div>
 
                                                   @if ($errors->any())
-     @foreach ($errors->all() as $error)
-         <div>{{$error}}</div>
-     @endforeach
- @endif
+                                                  @foreach ($errors->all() as $error)
+                                                  <div>{{$error}}</div>
+                                                  @endforeach
+                                                  @endif
                                                   <button type="button" class="btn btn-rounded btn-primary"
                                                       data-bs-toggle="modal" data-bs-target="#Withdraw">Withdraw
                                                       Funds</button>
@@ -198,16 +198,16 @@
                                                                       data-bs-dismiss="modal"
                                                                       aria-label="Close"></button>
                                                               </div>
-                                                              <form id="withdrawForm"  method="POST"
+                                                              <form id="withdrawForm" method="POST"
                                                                   action="{{route('user.Withdraw-Request')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
 
-                                                                  @if ($errors->any())
-     @foreach ($errors->all() as $error)
-         <div>{{$error}}</div>
-     @endforeach
- @endif
+                                                                      @if ($errors->any())
+                                                                      @foreach ($errors->all() as $error)
+                                                                      <div>{{$error}}</div>
+                                                                      @endforeach
+                                                                      @endif
                                                                       {{-- <div class="mb-1">Withdrawal may take 24 to 48
                                                                           hours to reflect in your funding wallet.</div> --}}
                                                                       <div class="row">
