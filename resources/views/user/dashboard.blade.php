@@ -129,7 +129,6 @@
                                                                   action="{{route('user.confirmDeposit')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
-                                                                      <!-- Your deposit form content goes here -->
                                                                       {{-- <div class="mb-1">Deposit may require 2 to 5
                                                                           Minutes to reflect in your funding wallet.</div> --}}
                                                                       <div class="row">
