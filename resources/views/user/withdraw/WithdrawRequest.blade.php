@@ -31,7 +31,7 @@
                                     </select>
                                 </div>
                                 
-
+/
                                 <div class="input-box col-lg-12 col-md-12 col-xl-12 col-12">
                                     <input class="form-control" type="text" name="amount" value=""
                                         placeholder="Enter Amount"

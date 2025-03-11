@@ -46,7 +46,7 @@ class WithdrawRequest extends Controller
 
         try{
              $validation =  Validator::make($request->all(), [
-            'amount' => 'required|numeric|min:10',
+            'amount' => 'required|numeric|min:1',
             'paymentMode' => 'required',    
             'code' => 'required',
         ]);
@@ -60,8 +60,7 @@ class WithdrawRequest extends Controller
         $user=Auth::user();
 
         
-         $notify[] = ['error', 'something wrong!'];
-              return redirect()->back()->withNotify($notify);
+         
 
         $code = $request->code;
             
@@ -84,14 +83,15 @@ class WithdrawRequest extends Controller
         $balance=Auth::user()->available_balance();
        
 
-        if ($request->paymentMode=="USDT.BEP20") 
-        {
-            $account =  $user->usdtBep20;
+        if ($request->paymentMode == "USDT.BEP20") {
+            $account = $user->usdtBep20;
+        } elseif ($request->paymentMode == "BANK TRANSFER") {
+            $bankDetail = Bank::where('user_id', $user->id)->first();
+            if ($bankDetail) {
+                $account = $bankDetail->account_no;
+            }
         }
-        else
-        {
-          $account =  $user->usdtTrc20;
-        }
+       
        
         if ($balance>=$request->amount)
         {
@@ -101,9 +101,7 @@ class WithdrawRequest extends Controller
          {
           return Redirect::back()->withErrors(array('Any Withdraw limit per Id once a day !'));    
          }
-         
-         
-         
+        
          $user_detail=Withdraw::where('user_id',$user->id)->where('status','Pending')->first();
 
          if(!empty($user_detail))
@@ -111,11 +109,11 @@ class WithdrawRequest extends Controller
            return Redirect::back()->withErrors(array('Withdraw Request Already Exist !'));
          }
          else
-         {
-         
+         { 
+
           if(!empty($account))
               {
-             
+
                    $data = [
                         'txn_id' =>md5(time() . rand()),     
                         'user_id' => $user->id,
@@ -170,6 +168,9 @@ class WithdrawRequest extends Controller
     }
 
 
+
+
+    
 
     // public function WithdrawRequestPrinciple(Request $request)
     // {

@@ -132,7 +132,7 @@ public function confirmDeposit(Request $request)
     if ($network == "usdtBep20") {
         $walletAddress = DB::table('general_settings')->value($network);
         $bankDetails = null; 
-    } elseif ($network == "bank_transfer") {
+    } elseif ($network == "bank-transfer") {
         $walletAddress = null; 
         $bankDetails = DB::table('general_settings')->select('account_no', 'ifsc_code', 'branch_name', 'bank_name')->first();
     } else {
@@ -311,6 +311,7 @@ public function confirmDeposit(Request $request)
         'account' => 'required',
         // 'units' => 'required|numeric', // `Changed from FLOAT to required numeric
         'txHash' => 'required|unique:investments,transaction_id',
+        'network'=>'required',
     ]);
     // dd($validation);
     if($validation->fails()) {
@@ -337,8 +338,7 @@ public function confirmDeposit(Request $request)
                 'user_id' => $user_detail->id,
                 'user_id_fk' => $user_detail->username,
                 'amount' => $request->amount,
-                // 'units' => $request->units,
-                'payment_mode' =>'USDT.BEP20',
+                'payment_mode' => $request->network,
                 'status' => 'Active',
                 'slip' => $request->account,
                 'percentage'=>0,

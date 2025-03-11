@@ -9,19 +9,7 @@
                 </div>
                 <div class="card-body">
                     <div>
-                     
-
-                        @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                        @endif
-
-                        @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                        @endif
+      
 
 
                         <form method="POST" action="{{ route('user.fundActivation') }}">
@@ -37,39 +25,37 @@
                                 @endif
                             </div>
 
-                            @if($network == 'bank_transfer' && $bankDetails)
-                            <div style="background-color:#f6fbf8 !important" class="mb-3 p-3 border rounded bg-light">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="form-label"> Company Ac. Number</label>
-                                        <input type="text" class="form-control" name="account_no" readonly value="{{ $bankDetails->account_no }}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">IFSC Code</label>
-                                        <input type="text" class="form-control" name="ifsc_code" readonly value="{{ $bankDetails->ifsc_code }}">
-                                    </div>
-                                    <div class="col-md-6 mt-3">
-                                        <label class="form-label">Branch Name</label>
-                                        <input type="text" class="form-control" name="branch_name" readonly value="{{ $bankDetails->branch_name }}">
-                                    </div>
-                                    <div class="col-md-6 mt-3">
-                                        <label class="form-label">Bank Name</label>
-                                        <input type="text" class="form-control" name="bank_name" readonly value="{{ $bankDetails->bank_name }}">
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            <div class="mb-3">
-                                <label class="form-label">Amount(1 Unit = {{currency()}} 10000)</label>
-                                <input type="number" class="form-control" value="{{ $amount }}" readonly name="amount">
-                            </div>
+ @if($network == 'bank-transfer' && $bankDetails)
+<div style="background-color:#f6fbf8 !important" class="mb-3 p-3 border rounded bg-light">
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label"> Company Ac. Number</label>
+            <input type="text" class="form-control" name="account_no" readonly value="{{ $bankDetails->account_no }}">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">IFSC Code</label>
+            <input type="text" class="form-control" name="ifsc_code" readonly value="{{ $bankDetails->ifsc_code }}">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label class="form-label">Branch Name</label>
+            <input type="text" class="form-control" name="branch_name" readonly value="{{ $bankDetails->branch_name }}">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label class="form-label">Bank Name</label>
+            <input type="text" class="form-control" name="bank_name" readonly value="{{ $bankDetails->bank_name }}">
+        </div>
+    </div>
+</div>
+@endif
+ <div class="mb-3">
+    <label class="form-label">Amount(1 Unit = {{currency()}} 10000)</label>
+    <input type="number" class="form-control" value="{{ $amount }}" readonly name="amount">
+</div>
 
-                            @if($network == 'usdtBep20' && $network)
-                            <div class="mb-3">
-                                <label class="form-label">Currency</label>
-                                <input type="text" class="form-control" name="network" readonly value="{{ strtoupper($network) }}">
-                            </div>
-                            @endif
+<div class="mb-3">
+    <label class="form-label">Currency</label>
+    <input type="text" class="form-control" name="network" readonly value="{{strtoupper($network) }}">
+</div>
 
 
                             @if($network == 'usdtBep20' && $wallet_address)
