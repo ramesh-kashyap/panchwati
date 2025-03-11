@@ -163,7 +163,6 @@
                                                                                   Deposit is 1 Unit</h6>
                                                                           </div>
                                                                       </div>
-                                                                      <!-- End of deposit form content -->
                                                                   </div>
                                                                   <div class="modal-footer">
                                                                       <button type="button"
@@ -225,10 +224,10 @@
                                                                                       name="paymentMode"
                                                                                       class="default-select form-control wide">
 
-                                                                                      <option value="USDT-TRC20">
+                                                                                      <option value="USDT.TRC20">
                                                                                           USDT(TRC-20)</option>
-                                                                                      <option value="USDT-BEP20">
-                                                                                          USDT(BEP-20)</option>
+                                                                                      <option value="Bank detail">
+                                                                                          BANK DETAIL</option>
                                                                                   </select>
                                                                               </div>
 
