@@ -10,7 +10,7 @@ class Withdraw extends Model
     use HasFactory;
 
     protected $fillable = [
-        'amount', 'user_id_fk', 'user_id','status','txn_id','payment_mode','paid_date','wdate','account','walletType'
+        'amount', 'user_id_fk', 'user_id','status','txn_id','payment_mode','paid_date','wdate','account','walletType','code'
     ];
 
     public  function user()
