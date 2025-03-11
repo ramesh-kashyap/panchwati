@@ -288,7 +288,7 @@
                                                       </span>
                                                       <span class="fs-15 text-black">
                                                           {{ currency() }}
-                                                          {{ number_format(auth::user()->u_strategy, 2) }}
+                                                          {{ number_format(auth::user()->dailyIncentive->sum('comm'), 2) }}
                                                       </span>
                                                   </div>
                                               </div>
