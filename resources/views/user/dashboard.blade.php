@@ -135,11 +135,11 @@
                                                                       <div class="row">
                                                                           <div class="col-md-12">
                                                                               <div class="mb-3">
-                                                                                  <label class="form-label">Enter Amount
-                                                                                      in USDT:</label>
+                                                                                  <label class="form-label">Enter Unit
+                                                                                      :</label>
                                                                                   <input type="number"
                                                                                       class="form-control input-default"
-                                                                                      placeholder="Enter Amount"
+                                                                                      placeholder="Enter Unit"
                                                                                       name="amount" required>
                                                                               </div>
                                                                           </div>
@@ -154,13 +154,13 @@
                                                                                       name="network" id="network">
 
                                                                                       <option value="USDT_TRX">
-                                                                                          Bank Transfer </option>
+                                                                                          USDT(TRC-20) </option>
                                                                                       <option value="USDT_BSC">
                                                                                           USDT(BEP-20) </option>
                                                                                   </select>
                                                                               </div>
                                                                               <h6 class="text-danger mx-1">Minimum
-                                                                                  Deposit is 50 USDT</h6>
+                                                                                  Deposit is 1 Unit</h6>
                                                                           </div>
                                                                       </div>
                                                                       <!-- End of deposit form content -->
@@ -192,8 +192,8 @@
                                                                       data-bs-dismiss="modal"
                                                                       aria-label="Close"></button>
                                                               </div>
-                                                              <form id="withdrawForm" method="POST"
-                                                                  action="">
+                                                              <form id="withdrawForm"  method="POST"
+                                                                  action="{{route('user.Withdraw-Request')}}">
                                                                   @csrf
                                                                   <div class="modal-body">
                                                                       {{-- <div class="mb-1">Withdrawal may take 24 to 48
@@ -222,7 +222,7 @@
                                                                                       class="form-label">Select
                                                                                       Network:</label>
                                                                                   <select id="network"
-                                                                                      name="withdraw_method"
+                                                                                      name="paymentMode"
                                                                                       class="default-select form-control wide">
 
                                                                                       <option value="USDT-TRC20">

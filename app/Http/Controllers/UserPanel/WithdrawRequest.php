@@ -40,136 +40,133 @@ class WithdrawRequest extends Controller
         return $this->dashboard_layout();
     }
 
+//dhshds
+    public function WithdrawRequest(Request $request)
+    {
 
-    // public function WithdrawRequest(Request $request)
-    // {
+        try{
 
-    //     try{
+             $validation =  Validator::make($request->all(), [
+            'amount' => 'required|numeric|min:10',
+            'paymentMode' => 'required',    
+            'code' => 'required',
+        ]);
 
-    //          $validation =  Validator::make($request->all(), [
-    //         'amount' => 'required|numeric|min:10',
-    //         'paymentMode' => 'required',    
-    //         'code' => 'required',
+        if($validation->fails()) {
+            Log::info($validation->getMessageBag()->first());
 
+            return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
+        }
 
-    //     ]);
-
-    //     if($validation->fails()) {
-    //         Log::info($validation->getMessageBag()->first());
-
-    //         return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
-    //     }
-
-    //     $user=Auth::user();
+        $user=Auth::user();
         
         
-    //      $notify[] = ['error', 'something wrong!'];
-    //           return redirect()->back()->withNotify($notify);
+         $notify[] = ['error', 'something wrong!'];
+              return redirect()->back()->withNotify($notify);
 
-    //     $code = $request->code;
+        $code = $request->code;
             
-    //     if (PasswordReset::where('token', $code)->where('email',$user->email)->count() != 1) {
-    //           $notify[] = ['error', 'Invalid token'];
-    //           return redirect()->back()->withNotify($notify);
-    //       }
+        if (PasswordReset::where('token', $code)->where('email',$user->email)->count() != 1) {
+              $notify[] = ['error', 'Invalid token'];
+              return redirect()->back()->withNotify($notify);
+          }
 
-    //     $totalDepositSponsor=Investment::where('user_id',$user->id)->where('status','Active')->sum('amount');
-    //     $total_get=($totalDepositSponsor*400/100)+@$user->extra_amt;
-    //     $totalWithdrwal = $user->withdraw()+$request->amount;
+        $totalDepositSponsor=Investment::where('user_id',$user->id)->where('status','Active')->sum('amount');
+        $total_get=($totalDepositSponsor*400/100)+@$user->extra_amt;
+        $totalWithdrwal = $user->withdraw()+$request->amount;
         
-    //     if($totalWithdrwal>=$total_get)
-    //     {
-    //          $notify[] = ['error', 'you can,t withdrawal above 4X your Package!'];
-    //           return redirect()->back()->withNotify($notify);  
-    //     }
+        if($totalWithdrwal>=$total_get)
+        {
+             $notify[] = ['error', 'you can,t withdrawal above 4X your Package!'];
+              return redirect()->back()->withNotify($notify);  
+        }
         
-          
-    //     $password= $request->transaction_password;
-    //     $balance=Auth::user()->available_balance();
-    //     if ($request->paymentMode=="USDT.TRC20") 
-    //     {
-    //       $account =  $user->usdtTrc20;
-    //     }
-    //     else
-    //     {
-    //       $account =  $user->usdtBep20;
-    //     }
+        $password= $request->transaction_password;
+        $balance=Auth::user()->available_balance();
+        if ($request->paymentMode=="USDT.TRC20") 
+        {
+          $account =  $user->usdtTrc20;
+        }
+        else
+        {
+          $account =  $user->usdtBep20;
+        }
        
-    //     if ($balance>=$request->amount)
-    //     {
-    //      $todayWitdrw=Withdraw::where('user_id',$user->id)->where('wdate',date('Y-m-d'))->first();
+        if ($balance>=$request->amount)
+        {
+         $todayWitdrw=Withdraw::where('user_id',$user->id)->where('wdate',date('Y-m-d'))->first();
          
-    //      if($todayWitdrw)
-    //      {
-    //       return Redirect::back()->withErrors(array('Any Withdraw limit per Id once a day !'));    
-    //      }
+         if($todayWitdrw)
+         {
+          return Redirect::back()->withErrors(array('Any Withdraw limit per Id once a day !'));    
+         }
          
          
          
-    //      $user_detail=Withdraw::where('user_id',$user->id)->where('status','Pending')->first();
+         $user_detail=Withdraw::where('user_id',$user->id)->where('status','Pending')->first();
 
-    //      if(!empty($user_detail))
-    //      {
-    //        return Redirect::back()->withErrors(array('Withdraw Request Already Exist !'));
-    //      }
-    //      else
-    //      {
+         if(!empty($user_detail))
+         {
+           return Redirect::back()->withErrors(array('Withdraw Request Already Exist !'));
+         }
+         else
+         {
          
-    //       if(!empty($account))
-    //           {
+          if(!empty($account))
+              {
              
-    //                $data = [
-    //                     'txn_id' =>md5(time() . rand()),     
-    //                     'user_id' => $user->id,
-    //                     'user_id_fk' => $user->username,
-    //                     'amount' => $request->amount,
-    //                     'account' => $account,
-    //                     'payment_mode' =>$request->paymentMode,
-    //                     'status' => 'Pending',
-    //                     'walletType' => 1,
-    //                     'wdate' => Date("Y-m-d"),
+                   $data = [
+                        'txn_id' =>md5(time() . rand()),     
+                        'user_id' => $user->id,
+                        'user_id_fk' => $user->username,
+                        'amount' => $request->amount,
+                        'account' => $account,
+                        'payment_mode' =>$request->paymentMode,
+                        'status' => 'Pending',
+                        'walletType' => 1,
+                        'wdate' => Date("Y-m-d"),
                     
                         
-    //                 ];
-    //                $payment =  Withdraw::Create($data);
+                    ];
+                   $payment =  Withdraw::Create($data);
                  
        
-    //         $notify[] = ['success','Withdraw Request Submited successfully'];
+            $notify[] = ['success','Withdraw Request Submited successfully'];
     
-    //         return redirect()->back()->withNotify($notify);
+            return redirect()->back()->withNotify($notify);
                    
              
                
             
                 
-    //           }
-    //           else
-    //             {
-    //             return Redirect::back()->withErrors(array('Please Update Your '.$request->paymentMode.' Payment address'));
-    //             }  
+              }
+              else
+                {
+                return Redirect::back()->withErrors(array('Please Update Your '.$request->paymentMode.' Payment address'));
+                }  
 
 
-    //      }
+         }
 
-    //     }
-    //     else
-    //     {
-    //  return Redirect::back()->withErrors(array('Insufficient balance in Your account'));
-    //     }
+        }
+        else
+        {
+     return Redirect::back()->withErrors(array('Insufficient balance in Your account'));
+        }
 
-    // }
-    // catch(\Exception $e){
-    //  Log::info('error here');
-    //  Log::info($e->getMessage());
-    //  print_r($e->getMessage());
-    //  die("hi");
-    //  return  redirect()->route('user.WithdrawRequest')->withErrors('error', $e->getMessage())->withInput();
-    //    }
-
-
+    }
+    catch(\Exception $e){
+     Log::info('error here');
+     Log::info($e->getMessage());
+     print_r($e->getMessage());
+     die("hi");
+     return  redirect()->route('user.WithdrawRequest')->withErrors('error', $e->getMessage())->withInput();
+       }
 
 
-    // }
+
+
+    }
 
 
 
