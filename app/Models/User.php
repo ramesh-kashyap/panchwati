@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name','lastname', 'email', 'password','phone','username','sponsor','ParentId','position','active_status','jdate','level','tpassword','adate','PSR','TPSR',
+        'name','lastname', 'email', 'password','phone','username','sponsor','ParentId','position','active_status','jdate','level','tpassword','adate','PSR','TPSR','usdtBep20'
     ];
 
     /**
@@ -76,7 +76,7 @@ class User extends Authenticatable
 
     public function dailyIncentive()
     {
-        return $this->hasMany('App\Models\Income','user_id','id')->where('remarks','Staking Bonus');
+        return $this->hasMany('App\Models\Income','user_id','id')->where('remarks','Roi Bonus');
     } 
 
     public function user_direct()

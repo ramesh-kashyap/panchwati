@@ -290,7 +290,7 @@ function verificationCode($length)
 
 
 
-function add_direct_income_new($id,$amt,$newDate,$newDateTime)
+function add_direct_income_new($id,$amt)
 {
 
   //$user_id =$this->session->userdata('user_id_session')
@@ -321,7 +321,7 @@ $user_mid = $data->id;
                 $sp_status="Pending";
                 $Sposnor_cnt =0;
               }
-             $percent = 5;
+             $percent = 3;
 
              if($sp_status=="Active")
                {
@@ -354,8 +354,7 @@ $user_mid = $data->id;
                 'level' => $cnt,
                 'rname' => $rname,
                 'fullname' => $fullname,
-                'ttime' => $newDate,
-                'created_at' => $newDateTime,
+                'ttime' => Date("Y-m-d"),
 
             ];
             $user_data =  Income::Create($data);

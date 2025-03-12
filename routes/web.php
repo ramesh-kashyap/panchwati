@@ -30,8 +30,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/generate_roi', [App\Http\Controllers\Cron::class, 'calculateRoi_income'])->name('generate_roi');
 
-Route::get('/generate_roi', [App\Http\Controllers\Cron::class, 'generate_roi_bonus'])->name('generate_roi');
+// Route::get('/generate_roi', [App\Http\Controllers\Cron::class, 'generate_roi_bonus'])->name('generate_roi');
 Route::get('/rank-update', [App\Http\Controllers\Cron::class, 'rank_update'])->name('rank-update');
 Route::get('/reward_bonus', [App\Http\Controllers\Cron::class, 'reward_bonus'])->name('reward_bonus');
 Route::get('/royalty_bonus', [App\Http\Controllers\Cron::class, 'dailyIncentive'])->name('royalty_bonus');
@@ -84,6 +85,8 @@ Route::get('/activities', [App\Http\Controllers\UserPanel\Dashboard::class, 'act
 Route::post('/submitActivity', [App\Http\Controllers\UserPanel\Dashboard::class, 'submitActivity'])->name('user.submitActivity');
 
 // profile
+Route::post('/bank-details', [App\Http\Controllers\UserPanel\Profile::class, 'bank_details'])->name('user.bank_details');
+
 Route::get('/profile', [App\Http\Controllers\UserPanel\Profile::class, 'index'])->name('user.profile');
 Route::post('/update-profile', [App\Http\Controllers\UserPanel\Profile::class, 'profile_update'])->name('user.update-profile');
 Route::get('/ChangePass', [App\Http\Controllers\UserPanel\Profile::class, 'change_password'])->name('user.ChangePass');

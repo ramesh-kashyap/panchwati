@@ -246,4 +246,50 @@ class Profile extends Controller
             return back()->withErrors('error', $e->getMessage())->withInput();
         }
     }
+
+
+
+    public function bank_details(Request $request)
+    {
+        $request->validate([
+            'usdtBep20' => 'nullable|string', 
+            'account_no' => 'nullable|numeric',
+            'ifsc_code' => 'nullable|string',
+            'bank_name' => 'nullable|string',
+            'branch_name' => 'nullable|string',
+        ]);
+    
+        $user = auth()->user();
+        $notify = []; // Notification Array
+    
+        // ✅ Agar Wallet Address Fill Kiya Hai to Users Table me Save Kare
+        if ($request->filled('usdtBep20')) {
+            $user->update(['usdtBep20' => $request->usdtBep20]);
+            $notify[] = ['success', 'Wallet address updated successfully.'];
+        }
+    
+        // ✅ Agar Puri Bank Details Fill Ki Hain to Banks Table me Save ya Update Kare
+        if ($request->filled(['account_no', 'ifsc_code', 'bank_name', 'branch_name'])) {
+            Bank::updateOrCreate(
+                ['user_id' => $user->id], 
+                [
+                    'account_no' => $request->account_no,
+                    'ifsc_code' => $request->ifsc_code,
+                    'bank_name' => $request->bank_name,
+                    'branch_name' => $request->branch_name,
+                    'account_holder' => $user->name,
+                    'user_id' => $user->id,
+                ]
+            );
+            $notify[] = ['success', 'Bank details saved/updated successfully.'];
+        }
+    
+        // ✅ Agar Wallet Address bhi Empty hai aur Bank Details bhi Empty hai to Error Show Kare
+        if (empty($notify)) {
+            $notify[] = ['error', 'Please provide either Wallet Address or complete Bank Details.'];
+        }
+    
+        return redirect()->back()->withNotify($notify);
+    }
+    
 }

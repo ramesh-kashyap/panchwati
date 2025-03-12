@@ -129,6 +129,11 @@ class Invest extends Controller
 
 public function confirmDeposit(Request $request)
 {
+  $request->validate([
+    'amount' => 'required|numeric|min:1',
+], [
+    'amount.min' => 'Minimum deposit must be at least 1 unit.', // Custom error message
+]);
   $network = $request->network;
     $amount = $request->amount;
     
@@ -310,7 +315,7 @@ public function confirmDeposit(Request $request)
 
   try{
     $validation =  Validator::make($request->all(), [
-        'amount' => 'required|numeric',
+        'amount' => 'required|numeric|min:10000',
         'account' => 'required',
         // 'units' => 'required|numeric', // `Changed from FLOAT to required numeric
         'txHash' => 'required|unique:investments,transaction_id',
@@ -361,7 +366,7 @@ public function confirmDeposit(Request $request)
             $user_update=array('package'=>$total,'active_status'=>'Active');
           User::where('id',$user_detail->id)->update($user_update); 
          }
-        //  add_direct_income($user_detail->id,$request->amount);
+         add_direct_income_new($user_detail->id,$request->amount);
          
 
         $notify[] = ['success','Deposit successfully'];

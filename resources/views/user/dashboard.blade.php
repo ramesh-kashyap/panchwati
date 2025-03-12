@@ -248,7 +248,7 @@
                                                                               <div class="mb-3">
                                                                                   <label for="" class="form-label">Verification Code</label>
                                                                                   <input type="text" id="" name="code" class="form-control input-default" placeholder="Verification Code" required>
-                                                                                  <div class="first-code-send text-primary" style="position: absolute; top: 77.5%; right: 43px; cursor:pointer;font-size: 15px;">@lang('Get Code')</div>
+                                                                                  <div class="first-code-send text-primary" style="position: absolute; top: 79.5%; right: 43px; cursor:pointer;font-size: 15px;">@lang('Get Code')</div>
                                                                                   <span class="resend-btn code-btn text-primary" style="position: absolute; top: 77.5%; right: 43px; cursor: pointer;display:none;">@lang('Resend Code')</span>
                                                                               </div>
 
@@ -288,7 +288,7 @@
                                                       </span>
                                                       <span class="fs-15 text-black">
                                                           {{ currency() }}
-                                                          {{ number_format(auth::user()->u_strategy, 2) }}
+                                                          {{ number_format(auth::user()->dailyIncentive->sum('comm'), 2) }}
                                                       </span>
                                                   </div>
                                               </div>
