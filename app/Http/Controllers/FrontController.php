@@ -21,7 +21,10 @@ class FrontController extends Controller
     {
         return view('main.services');
     }
-
+    public function Blog()
+    {
+        return view('main.blogDetail');
+    }
     public function contact()
     {
         return view('main.contact');

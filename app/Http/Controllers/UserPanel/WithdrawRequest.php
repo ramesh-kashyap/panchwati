@@ -23,9 +23,11 @@ class WithdrawRequest extends Controller
 {
 
   public function withdrawStatus()
-  {
-      return view('user.withdraw.withdrawalstatus');
-  }
+{
+  $withdraws = Withdraw::paginate(10);  // Fetch all records using Eloquent
+
+    return view('user.withdraw.withdrawalstatus', compact('withdraws'));
+}
     public function index()
     {
         $user=Auth::user();

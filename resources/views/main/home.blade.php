@@ -27,7 +27,8 @@
                                         data-mask_in="x:0px;y:[100%];" data-mask_out="x:inherit;y:inherit;"
                                         data-start="700" data-splitin="none" data-splitout="none"
                                         data-responsive_offset="on">
-                                        <h3 class="sub-title">MARKETS & RESOURCES</h3>
+                                        <h3 class="sub-title"> We offer high-quality composting beds
+                                        </h3>
                                     </div>
 
                                     <div class="tp-caption tp-resizeme text-two"
@@ -44,7 +45,7 @@
                                         data-start="700" data-splitin="none" data-splitout="none"
                                         data-responsive_offset="on">
                                         <div class="title-box">
-                                            <h1 class="title-slider2">Grow your health <br> grow a garden</h1>
+                                            <h1 class="title-slider2">Welcome to Our <br> Vermicomposting </h1>
                                         </div>
                                     </div>
 
@@ -61,7 +62,7 @@
                                         data-responsive_offset="on">
                                         <div class="button-box">
                                             <div class="button res-btn-slider">
-                                                <a href="contact.html" class="btn btn-left">Get A Quote</a>
+                                                <a href="#" class="btn btn-left">Get A Quote</a>
                                             </div>
                                         </div>
                                     </div>
@@ -99,11 +100,12 @@
                 <div class="col-md-12">
                     <div class="features-home2-box  wow fadeInUp">
                         <div class="features-left link-style2">
-                            <h2 class="title-main">A step towards less pollution</h2>
+                            <h2 class="title-main">What is Vermicompost?</h2>
                             <a href="#" class="title-main heading2">(643)911-1633</a>
                         </div>
                         <div class="features-right">
-                            <p class="section-desc">Panchvati Leaf Private Limited is committed to transforming the healthcare solutions and organic farming sector. By advocating for the use of vermicompost, the company strives to improve agricultural productivity while maintaining a sustainable and eco-conscious farming approach. Moreover, Panchvati Leaf offers attractive financial assistance programs for farmers and an enriching partnership program for individuals looking to collaborate as channel partners.</p>
+                            <p class="section-desc">Vermicompost is an organic fertilizer prepared with the help of earthworms that decompose organic waste such as dry leaves, vegetable peels, cow dung, crop residues, etc. It helps improve soil fertility and enhances crop yield.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -133,7 +135,7 @@
             <div class="item-three-column mg-bottom-20 wow fadeInLeft">
                 <article class="flat-WCU-box grow-up-hover">
                     <div class="WCU-image">
-                        <img class="grow-up-hover" src="{{ asset('') }}images/why-choose-us/artical-post-1.jpg" alt="images">
+                        <img class="grow-up-hover" src="{{ asset('') }}images/home/4.jpeg" alt="images">
                     </div>
                     <div class="features-box">
                         <span class="tf-icon icon-fruit-box">
@@ -141,42 +143,53 @@
                         </span>
                         <div class="content-features">
                             <a href="service-details.html">
-                                <h3 class="section-heading-rubik-size20">Landscaping</h3>
+                                <h3 class="section-heading-rubik-size20">100% Natural & Organic</h3>
                             </a>
-                            <h6 class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Duis at est id leo</h6>
+                            <h6 class="section-desc">
+                                <span class="short-text">Grown with nature’s best, free from chemicals..</span>
+                                <span class="full-text" style="display: none;">
+                                    Grown with nature’s best, free from chemicals and additives. Pure, organic nourishment for healthier soil and plants.
+                                </span>
+                            </h6>
                         </div>
                     </div>
                     <div class="button-read-more link-style2">
-                        <a href="service-details.html" class="read-more btn-read-more">Read More</a>
+                        <a href="#" class="read-more btn-read-more" onclick="toggleContent(event, this)">Read More</a>
                     </div>
                 </article>
             </div>
+
+
+
             <div class="item-three-column mg-bottom-20 wow fadeInUp">
                 <article class="flat-WCU-box grow-up-hover">
                     <div class="WCU-image">
-                        <img class="grow-up-hover" src="{{ asset('') }}images/why-choose-us/artical-post-2.jpg" alt="images">
+                        <img class="grow-up-hover" src="{{ asset('') }}images/home/10.webp" alt="images">
                     </div>
                     <div class="features-box">
                         <span class="tf-icon icon2 icon-hanging-bot"> <img class="grow-up-hover" src="{{ asset('') }}images/icons8-tree-planting-100.png" alt="images">
                         </span>
                         <div class="content-features">
                             <a href="service-details.html">
-                                <h3 class="section-heading-rubik-size20">Pruning plants</h3>
+                                <h3 class="section-heading-rubik-size20">Sustainable & Eco-Friendly
+                                </h3>
                             </a>
-                            <h6 class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Duis at est id leo</h6>
+                            <h6 class="section-desc">
+
+                                <span class="short-text">Promotes soil health while reducing environmental..</span>
+                                <span class="full-text" style="display: none;">Promotes soil health while reducing environmental impact. A natural way to grow greener and healthier crops.</span>
+                            </h6>
                         </div>
                     </div>
                     <div class="button-read-more link-style2">
-                        <a href="service-details.html" class="read-more btn-read-more">Read More</a>
+                        <a href="#" class="read-more btn-read-more" onclick="toggleContent(event, this)">Read More</a>
                     </div>
                 </article>
             </div>
             <div class="item-three-column mg-bottom-20 wow fadeInRight">
                 <article class="flat-WCU-box grow-up-hover">
                     <div class="WCU-image">
-                        <img class="grow-up-hover" src="{{ asset('') }}images/why-choose-us/artical-post-3.jpg" alt="images">
+                        <img class="grow-up-hover" src="{{ asset('') }}images/home/3.jpeg" alt="images">
                     </div>
                     <div class="features-box">
                         <span class="tf-icon icon2 icon-hanging-bot">
@@ -189,15 +202,19 @@
                             </svg>
                         </span>
                         <div class="content-features">
-                            <a href="service-details.html">
-                                <h3 class="section-heading-rubik-size20">Lawn Maintenance</h3>
+                            <a href="#">
+                                <h3 class="section-heading-rubik-size20">Vermicompost Bed Maintenance</h3>
                             </a>
-                            <h6 class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Duis at est id leo</h6>
+                            <h6 class="section-desc">
+
+                                <span class="short-text">Promotes soil health while reducing environmental..</span>
+                                <span class="full-text" style="display: none;">Maintain the right moisture level for healthy worm activity.
+                                    Avoid overwatering to prevent anaerobic conditions and odors.</span>
+                            </h6>
                         </div>
                     </div>
                     <div class="button-read-more link-style2">
-                        <a href="service-details.html" class="read-more btn-read-more">Read More</a>
+                        <a href="#" class="read-more btn-read-more" onclick="toggleContent(event, this)">Read More</a>
                     </div>
                 </article>
             </div>
@@ -217,7 +234,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="image-about-home2">
-                <img src="{{ asset('') }}images/home/close-up-planting-flowers-pot.jpg" alt="images">
+                <img src="{{ asset('') }}images/home/10.webp" alt="images">
             </div>
             <div class="container">
                 <div class="row">
@@ -226,18 +243,18 @@
                             data-smobile="60"></div>
                         <div class="about-content-left themesflat-counter">
                             <h5 class="section-subtitle">ABOUT US</h5>
-                            <h2 class="section-title">Nurture The environment</h2>
-                            <p class="section-desc">Lorem Ipsum is simply dummy text of free available market
-                                typesetting industry has been the industry's standard dummy</p>
+                            <h2 class="section-title">Promote Organic Farming!</h2>
+                            <p class="section-desc">"Support sustainability, grow naturally, protect soil, and nourish future generations!" 🌱</p>
                             <div class="about-history-box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
                                 <div class="icon-about">
                                     <style>
                                         .mechanic-icon {
 
                                             color: green;
-                                          
-                                            font-size: 50px;
-                                            
+
+                                            font-size: 70px;
+                                            margin-top: 30px;
+
                                         }
                                     </style>
                                     <span class="tf-icon-about icon-admin-sys">
@@ -247,8 +264,7 @@
                                     <div class="about-count-year section-heading-jost-size20 fw-600">25 YEARS
                                     </div>
                                 </div>
-                                <p class="section-desc about-box-right">Lorem Ipsum is simply dummy text of free
-                                    available market type setting industry</p>
+                                <p class="section-desc about-box-right">25 years strong—committed to chemical-free, organic, and sustainable farming!</p>
                             </div>
                         </div>
                     </div>
@@ -260,25 +276,23 @@
                                 <div class="features-box">
                                     <span class="icon-about-right"></span>
                                     <div class="content-features">
-                                        <h3 class="section-heading-jost-size20 fw-600">Ligula molestie</h3>
-                                        <p class="section-desc white">Dolor sit amet onsectetur adipisicing
-                                            elit, sed do eiusmod tempor incididunt</p>
+                                        <h3 class="section-heading-jost-size20 fw-600">25 Years of Organic Farming</h3>
+                                        <p class="section-desc white">Celebrating 25 years of sustainable agriculture—chemical-free farming, eco-friendly practices.</p>
                                     </div>
                                 </div>
                                 <div class="features-box box-2">
                                     <span class="icon-about-right"></span>
                                     <div class="content-features">
-                                        <h3 class="section-heading-jost-size20 fw-600">Magna vivamus</h3>
-                                        <p class="section-desc white">Lorem ipsum dolor sit amet, consectetur
-                                            adipisicing elit, sed do eiusmod</p>
+                                        <h3 class="section-heading-jost-size20 fw-600">Benefits of Organic Farming</h3>
+                                        <p class="section-desc white">
+                                            Organic farming enriches soil, protects biodiversity.</p>
                                     </div>
                                 </div>
                                 <div class="features-box box-2">
                                     <span class="icon-about-right"></span>
                                     <div class="content-features">
-                                        <h3 class="section-heading-jost-size20 fw-600">Efficitur velit </h3>
-                                        <p class="section-desc white">Consectetur adipisicing elised do eiusmod
-                                            tempor incididunt ut labore</p>
+                                        <h3 class="section-heading-jost-size20 fw-600">Sustainable Future with Organic Practices</h3>
+                                        <p class="section-desc white">Choosing organic means preserving nature, reducing pollution, and conserving water. Sustainable farming secures healthier food, stronger ecosystems.</p>
                                     </div>
                                 </div>
                             </div>
@@ -312,50 +326,52 @@
         <div class="row">
             <div class="item-four-column wow fadeInDown">
                 <article class="service-box hover-up">
-                    <a href="service-details.html" class="section-heading-rubik-size20">Landscaping</a>
-                    <h6 class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at
-                        est id leo</h6>
+                    <a href="service-details.html" class="section-heading-rubik-size20">Organic Compost Supply</a>
+                    <h6 class="section-desc" style="overflow: hidden;">Enrich your soil naturally with premium organic compost, promoting healthier plant growth. Sustainable, for a greener future!</h6>
                     <hr class="service-line">
                     <span class="tf-icon-service icon-icon-farming-layer"><span class="path1"></span><span
                             class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                            class="path5"></span></span>
+                            class="path5"></span></span><i class="fa fa-recycle" style="color: green; font-size: 40px;"></i>
+
                 </article>
                 <div class="themesflat-spacer clearfix" data-desktop="0" data-mobile="30" data-smobile="30">
                 </div>
             </div>
             <div class="item-four-column wow fadeInDown">
                 <article class="service-box service-box2 hover-up">
-                    <a href="service-details.html" class="section-heading-rubik-size20">Pruning plants</a>
-                    <h6 class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at
+                    <a href="service-details.html" class="section-heading-rubik-size20">Sustainable Farming Consultation</a>
+                    <h6 class="section-desc">Expert guidance for eco-friendly and sustainable farming practices. Enhance soil health and boost crop yields naturally
                         est id leo</h6>
                     <hr class="service-line line2">
                     <span class="tf-icon-service icon-box2 icon-Group-7527"><span class="path1"></span><span
-                            class="path2"></span><span class="path3"></span></span>
+                            class="path2"></span><span class="path3"></span></span><i class="fa fa-seedling" style="color: green; font-size: 40px;"></i>
+
                 </article>
                 <div class="themesflat-spacer clearfix" data-desktop="0" data-mobile="30" data-smobile="30">
                 </div>
             </div>
             <div class="item-four-column wow fadeInDown">
                 <article class="service-box service-box3 hover-up">
-                    <a href="service-details.html" class="section-heading-rubik-size20">Lawn Maintenance</a>
-                    <h6 class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at
-                        est id leo</h6>
+                    <a href="service-details.html" class="section-heading-rubik-size20">Vermicompost Production</a>
+                    <h6 class="section-desc" style="overflow: hidden;">Vermicompost Production: Transform organic waste into nutrient-rich compost for healthier soil and stronger crops.</h6>
                     <hr class="service-line line3">
                     <span class="tf-icon-service icon-box3 icon-Group-7526"><span class="path1"></span><span
                             class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                            class="path5"></span><span class="path6"></span></span>
+                            class="path5"></span><span class="path6"></span></span><i class="fa-solid fa-dumpster" style="color: green; font-size: 40px;"></i>
+
+
                 </article>
                 <div class="themesflat-spacer clearfix" data-desktop="0" data-mobile="60" data-smobile="30">
                 </div>
             </div>
             <div class="item-four-column wow fadeInDown">
                 <article class="service-box service-box4 hover-up">
-                    <a href="service-details.html" class="section-heading-rubik-size20">Irrigation & Drainage</a>
-                    <h6 class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at
-                        est id leo</h6>
+                    <a href="service-details.html" class="section-heading-rubik-size20">Vermicompost Distribution</a>
+                    <h6 class="section-desc" style="overflow: hidden;">
+                        Vermicompost Distribution: Delivering high-quality vermicompost to support sustainable agriculture and eco-friendly farming.</h6>
                     <hr class="service-line line4">
                     <span class="tf-icon-service icon-box4 icon-Group-7528"><span class="path1"></span><span
-                            class="path2"></span><span class="path3"></span></span>
+                            class="path2"></span><span class="path3"></span></span><i class="fa fa-truck" style="color: green; font-size: 40px;"></i>
                 </article>
                 <div class="themesflat-spacer clearfix" data-desktop="0" data-mobile="60" data-smobile="60">
                 </div>
@@ -366,7 +382,7 @@
 <!-- service home2 -->
 
 <!-- shop home2 -->
-<section class="flat-shop">
+<!-- <section class="flat-shop">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -489,7 +505,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- /shop home2 -->
 
 <!-- counter-->
@@ -502,7 +518,7 @@
             </div>
             <div class="col-md-9">
                 <div class="counter-content-left wow fadeInLeft">
-                    <img class="background-counter" src="{{ asset('') }}images/Counter/the-man-working-tree.jpg" alt="images">
+                    <img class="background-counter" src="{{ asset('') }}images/home/5.jpeg" alt="images">
                     <div class="content-left-box">
                         <h2 class="title-main">We are nice people with a lot of experience.</h2>
                         <p class="section-desc">Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex
@@ -551,15 +567,15 @@
             <div class="item-three-column wow fadeInLeft">
                 <div class="list-box-profolio mg-bottom30 wow fadeInUp">
                     <div class="image-profolio">
-                        <img src="{{ asset('') }}images/profolio/home1-item1.jpg" alt="images">
+                        <img src="{{ asset('') }}images/home/9.jpg" alt="images">
                         <div class="profolio-show">
                             <div class="profolio-info">
                                 <div class="info">
                                     <a href="case-details.html">
                                         <h3 class="section-heading-jost-size20">
-                                            Finished Work</h3>
+                                            Organic Wheat Cultivation</h3>
                                     </a>
-                                    <p class="desc-box">Dummy text of free available</p>
+                                    <p class="desc-box">We provide high-quality, nutrient-rich organic compost to enhance soil fertility</p>
                                 </div>
                                 <div class="button-next">
                                     <a class="profolio-btn" href="case-details.html"></a>
@@ -571,15 +587,15 @@
 
                 <div class="list-box-profolio mg-bottom30 wow fadeInUp">
                     <div class="image-profolio">
-                        <img src="{{ asset('') }}images/profolio/home1-item2.jpg" alt="images">
+                        <img src="{{ asset('') }}images/home/2.jpeg" alt="images">
                         <div class="profolio-show">
                             <div class="profolio-info">
                                 <div class="info">
                                     <a href="case-details.html">
                                         <h3 class="section-heading-jost-size20">
-                                            Finished Work</h3>
+                                            100% Natural & Organic</h3>
                                     </a>
-                                    <p class="desc-box">Dummy text of free available</p>
+                                    <p class="desc-box">Grown with nature’s best, free from chemicals</p>
                                 </div>
                                 <div class="button-next">
                                     <a class="profolio-btn" href="case-details.html"></a>
@@ -592,15 +608,16 @@
             <div class="item-three-column wow fadeInUp">
                 <div class="list-box-profolio wow fadeInUp">
                     <div class="image-profolio">
-                        <img src="{{ asset('') }}images/profolio/profolio-image-3.jpg" alt="images">
+                        <img src="{{ asset('') }}images/home/10.webp" alt="images">
                         <div class="profolio-show active">
                             <div class="profolio-info">
                                 <div class="info">
                                     <a href="case-details.html">
                                         <h3 class="section-heading-jost-size20">
-                                            Finished Work</h3>
+                                            images
+                                            Sustainable & Eco-Friendly</h3>
                                     </a>
-                                    <p class="desc-box">Dummy text of free available</p>
+                                    <p class="desc-box">Promotes soil health while reducing environmental. </p>
                                 </div>
                                 <div class="button-next">
                                     <a class="profolio-btn" href="case-details.html"></a>
@@ -615,15 +632,16 @@
             <div class="item-three-column item-flex-100 wow fadeInRight">
                 <div class="list-box-profolio mg-bottom30 wow fadeInUp">
                     <div class="image-profolio">
-                        <img src="{{ asset('') }}images/profolio/home1-item3.jpg" alt="images">
+                        <img src="{{ asset('') }}images/home/3.jpeg" alt="images">
                         <div class="profolio-show">
                             <div class="profolio-info">
                                 <div class="info">
                                     <a href="case-details.html">
                                         <h3 class="section-heading-jost-size20">
-                                            Finished Work</h3>
+                                            Vermicompost Bed Maintenance</h3>
                                     </a>
-                                    <p class="desc-box">Dummy text of free available</p>
+                                    <p class="desc-box">
+                                        Promotes soil health while reducing environmental.</p>
                                 </div>
                                 <div class="button-next">
                                     <a class="profolio-btn" href="case-details.html"></a>
@@ -634,15 +652,16 @@
                 </div>
                 <div class="list-box-profolio wow fadeInUp">
                     <div class="image-profolio">
-                        <img src="{{ asset('') }}images/profolio/home1-item4.jpg" alt="images">
+                        <img src="{{ asset('') }}images/home/4.jpeg" alt="images">
                         <div class="profolio-show">
                             <div class="profolio-info">
                                 <div class="info">
                                     <a href="case-details.html">
                                         <h3 class="section-heading-jost-size20">
-                                            Finished Work</h3>
+                                            Vermicompost Production</h3>
                                     </a>
-                                    <p class="desc-box">Dummy text of free available</p>
+                                    <p class="desc-box">
+                                        Transform organic waste into nutrient-rich compost for healthier soi</p>
                                 </div>
                                 <div class="button-next">
                                     <a class="profolio-btn" href="case-details.html"></a>
@@ -673,8 +692,7 @@
                         <h5 class="section-subtitle">CLIENT TESTIMONIALS</h5>
                         <h2 class="section-title">What our clients say</h2>
                     </div>
-                    <p class="section-desc mg-top-25">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+                    <p class="section-desc mg-top-25">Exceptional quality and service! The organic products have transformed our farming.Pure, chemical-free, and sustainable—exactly what we needed for healthy crops!</p>
                 </div>
                 <div class="themesflat-spacer clearfix" data-desktop="0" data-mobile="30" data-smobile="30">
                 </div>
@@ -699,8 +717,7 @@
                                     </div>
                                 </div>
                                 <div class="testimonials-text section-desc mg-top-25">
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                        eirmod tempor invi</p>
+                                    <p>The organic compost improved our soil fertility tremendously—highly recommended!</p>
                                 </div>
                             </div>
                         </div>
@@ -716,8 +733,7 @@
                                     </div>
                                 </div>
                                 <div class="testimonials-text section-desc mg-top-25">
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                        eirmod tempor invi</p>
+                                    <p>Excellent quality wheat! Fresh, nutritious, and perfect for healthy meals.</p>
                                 </div>
                             </div>
                         </div>
@@ -733,12 +749,11 @@
                                     </div>
                                 </div>
                                 <div class="testimonials-text section-desc mg-top-25">
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                        eirmod tempor invi</p>
+                                    <p>Reliable service and top-quality organic products—our farm yields have never been better!</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
+                        <!-- <div class="item">
                             <div class="testimonials-author-box box-2 bd-radius-8">
                                 <div class="testimonials-author">
                                     <div class="testimonials-author-img">
@@ -754,7 +769,7 @@
                                         eirmod tempor invi</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -794,7 +809,7 @@
                     <div class="item">
                         <article class="flat-news-box grow-up-hover">
                             <div class="news-image bd-radius-8">
-                                <img src="{{ asset('') }}images/profolio/home1-item1.jpg"
+                                <img src="{{ asset('') }}images/home/4.jpeg"
                                     class="grow-up-hover" alt="images">
                             </div>
                             <div class="news-content-box bd-radius-8">
@@ -809,7 +824,7 @@
                                 <a href="blog-detail.html" class="section-heading-rubik-size20 fw-500">Mauris Neque Nisiibus
                                     Non Elementum</a>
                                 <div class="news-read-more link-style2 mg-top-15">
-                                    <a href="blog-detail.html" class="news-rm section-heading-rubik-size16">READ MORE</a>
+                                    <a href="{{route('blog-details')}}" class="news-rm section-heading-rubik-size16">READ MORE</a>
                                 </div>
                             </div>
                         </article>
@@ -832,7 +847,7 @@
                                 <a href="blog-detail.html" class="section-heading-rubik-size20 fw-500">Quisque Suscipit Ipsum
                                     Est, Eu Venenatis Leo</a>
                                 <div class="news-read-more link-style2 mg-top-15">
-                                    <a href="blog-detail.html" class="news-rm section-heading-rubik-size16">READ MORE</a>
+                                    <a href="{{route('blog-details')}}" class="news-rm section-heading-rubik-size16">READ MORE</a>
                                 </div>
                             </div>
                         </article>
@@ -855,7 +870,7 @@
                                 <a href="blog-detail.html" class="section-heading-rubik-size20 fw-500">Maecenas Interdum Lorem
                                     Eleifend Orci Aliquam</a>
                                 <div class="news-read-more link-style2 mg-top-15">
-                                    <a href="blog-detail.html" class="news-rm section-heading-rubik-size16">READ MORE</a>
+                                    <a href="{{route('blog-details')}}" class="news-rm section-heading-rubik-size16">READ MORE</a>
                                 </div>
                             </div>
                         </article>
@@ -869,4 +884,23 @@
     </div>
 </section>
 <!-- /news -->
+
+<script>
+    function toggleContent(event, button) {
+        event.preventDefault();
+        let container = button.closest(".flat-WCU-box");
+        let shortText = container.querySelector(".short-text");
+        let fullText = container.querySelector(".full-text");
+
+        if (fullText.style.display === "none") {
+            fullText.style.display = "inline";
+            shortText.style.display = "none";
+            button.innerText = "Read Less";
+        } else {
+            fullText.style.display = "none";
+            shortText.style.display = "inline";
+            button.innerText = "Read More";
+        }
+    }
+</script>
 @include('layouts.mainsite.footer')

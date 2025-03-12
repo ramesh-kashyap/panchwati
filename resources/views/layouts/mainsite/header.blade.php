@@ -21,14 +21,14 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}stylesheet/style.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('') }}stylesheet/responsive.css"> 
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}stylesheet/responsive.css">
 
-       <link rel="stylesheet" type="text/css" href="{{ asset('') }}/stylesheet/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}/stylesheet/icomoon.css">
 
     <!-- Favicon and touch icons  -->
-    <link href="{{ asset('') }}icon/Favicon.png" rel="apple-touch-icon-precomposed">
-    <link href="{{ asset('') }}icon/Favicon.png" rel="apple-touch-icon-precomposed">
-    <link href="{{ asset('') }}icon/Favicon.png" rel="shortcut icon">
+    <link href="{{ asset('') }}icon/fav.png" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('') }}icon/fav.png" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('') }}icon/fav.png" rel="shortcut icon">
 
     <!-- anime -->
     <link rel="stylesheet" href="{{ asset('') }}stylesheet/animate.css">
@@ -80,12 +80,12 @@
                         <div class="col-md-3">
                             <div class="inner-header">
                                 <div class="">
-                                <a href="/" title="">
+                                    <a href="/" title="">
                                         <img src="{{ asset('')}}icon/logo.png" style="width:100px;height:auto;">
                                     </a>
                                 </div>
                                 <!-- /#logo -->
-                              
+
                                 <div class="btn-menu">
                                     <span></span>
                                 </div>
@@ -98,52 +98,21 @@
                             <div class="nav-wrap">
                                 <nav id="mainnav" class="mainnav">
                                     <ul class="menu">
-                                        <li class="current-menu-item ">
-                                            <a href="/" title="">Home</a>
-                                            <!-- <ul class="sub-menu">
-                                                <li><a href="index.html" title="">Home 01</a></li>
-                                                <li class="current-item"><a href="home-2.html" title="">Home 02</a></li>
-                                            </ul> -->
-                                            <!-- /.sub-menu -->
+                                        <li class="{{ request()->is('/') ? 'current-menu-item' : '' }}">
+                                            <a href="{{ url('/') }}" title="">Home</a>
                                         </li>
-                                        <li class="">
-                                            <a href="/about-us" title="">About</a>
-                                            <!-- <ul class="sub-menu">
-                                                <li><a href="/about" title="">About Us</a></li>
-                                                <li><a href="/team" title="">Team</a></li>
-                                                <li><a href="/faq" title="">Faq</a></li>
-                                            </ul> -->
-                                            <!-- /.sub-menu -->
+                                        <li class="{{ request()->is('about-us') ? 'current-menu-item' : '' }}">
+                                            <a href="{{ url('/about-us') }}" title="">About</a>
                                         </li>
-                                        <li class="">
-                                            <a href="/services" title="">Services</a>
-                                            <!-- <ul class="sub-menu">
-                                                <li><a href="/services" title="">Services</a></li>
-                                                <li><a href="/services-detail   " title="">Service Details</a></li>
-                                            </ul> -->
-                                            <!-- /.sub-menu -->
+                                        <li class="{{ request()->is('services') ? 'current-menu-item' : '' }}">
+                                            <a href="{{ url('/services') }}" title="">Services</a>
                                         </li>
-                                        <!-- <li class="menu-item-has-children">
-                                            <a href="case-study.html" title="">Case</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="/case" title="">Case Study</a></li>
-                                                <li><a href="/case-detail" title="">Case Details</a></li>
-                                            </ul>
-                                            
-                                        </li> -->
-                                        <!-- <li class="menu-item-has-children">
-                                            <a href="/blog" title="">Blog</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="/blog" title="">Blog Standard</a></li>
-                                                <li><a href="/blog-detail" title="">Blog Detail</a></li>
-                                            </ul>
-                                        
-                                        </li> -->
-                                        <li>
-                                            <a href="/contact-us" title="">Contact</a>
+                                        <li class="{{ request()->is('contact-us') ? 'current-menu-item' : '' }}">
+                                            <a href="{{ url('/contact-us') }}" title="">Contact</a>
                                         </li>
                                     </ul>
                                 </nav>
+
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -167,15 +136,15 @@
                                         <a href="#" class="cart-btn"><i class="fa fa-shopping-cart"></i></a>
                                     </div>
                                     <div class="button">
-                                    @if(Auth::check())
-                                    <p style="color: green;">Hi, {{ substr(Auth::user()->name, 0, 8) }}</p>
+                                        @if(Auth::check())
+                                        <p style="color: green;">Hi, {{ substr(Auth::user()->name, 0, 8) }}</p>
 
-@else
-    <a href="{{ route('login') }}"class="btn">Login</a>     
-@endif
+                                        @else
+                                        <a href="{{ route('login') }}" class="btn">Login</a>
+                                        @endif
 
                                     </div>
-                              
+
                                 </div>
                             </div>
                             <!-- header right -->
@@ -187,3 +156,13 @@
             </div>
             <!-- /.container -->
         </header>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const navLinks = document.querySelectorAll(".menu li a");
+                navLinks.forEach(link => {
+                    if (link.href === window.location.href) {
+                        link.parentElement.classList.add("current-menu-item");
+                    }
+                });
+            });
+        </script>

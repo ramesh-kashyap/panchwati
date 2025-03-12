@@ -8,7 +8,7 @@
       <div class="container-fluid">
           <div class="row">
 
-              <div class="col-xl-12 col-xxl-12 col-sm-12">
+              <!-- <div class="col-xl-12 col-xxl-12 col-sm-12">
                   <marquee onmouseover="this.stop();" style="    padding: 10px;" onmouseout="this.start();" class="bgl-primary"><b>Panchvati Leaf Private Limited is dedicated to revolutionizing the healthcare
                           solutions and organic farming industry. By promoting the use of vermicompost, the company
                           aims to enhance agricultural productivity while ensuring a sustainable and eco-friendly approach
@@ -17,7 +17,7 @@
                           partners. </b></marquee>
 
 
-              </div>
+              </div> -->
               <br> <br>
               <br>
               <div class="col-xl-3 col-xxl-3 col-sm-6">

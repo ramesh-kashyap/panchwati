@@ -18,7 +18,7 @@
 	<title>{{siteName()}} | Admin Dashboard</title>
 
 	<!-- FAVICONS ICON -->
-	<link rel="shortcut icon" type="image/png" href="{{asset('')}}mainsite/assets/img/fav.png" />
+	<link rel="shortcut icon" type="image/png" href="{{asset('')}}icon/fav.png" />
 	<link rel="stylesheet" href="{{asset('')}}admin/vendor/chartist/css/chartist.min.css">
     <link href="{{asset('')}}admin/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 	<link href="{{asset('')}}admin/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">

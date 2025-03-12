@@ -167,7 +167,7 @@
 .page-title-home1,
 .page-title-home2 {
     position: relative;
-    background-image: url(../images/home/imgheader.jpg);
+    background-image: url(../images/home/4.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -180,7 +180,7 @@
 }
 .page-title-home2 {
     height: 755px;
-    background-image: url(../images/home/box-flowers-green-garden-background.jpg);
+    background-image: url(../images/home/4.jpeg);
 }
 .page-title-home1 .sub-title {
     letter-spacing: 4px !important;
@@ -1440,7 +1440,7 @@ textarea {
 .flat-service-home2 {
     position: relative;
     height: 509.45px;
-    background-image: url(../images/home/plants-pot-with-watering-can.jpg);
+    background-image: url(../images/home/3.jpeg);
     background-position: center;
     background-size: cover;
 }

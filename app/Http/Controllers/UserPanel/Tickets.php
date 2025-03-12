@@ -19,6 +19,13 @@ class Tickets extends Controller
   {
       return view('user.ticket.ticket');
   }
+  public function ticketStatus()
+  {
+    $tickets = Ticket::paginate(10);  // Fetch all records using Eloquent
+
+   
+      return view('user.ticket.ticketstatus',compact('tickets'));
+  }
     public function GenerateTicket(Request $request)
     {
 

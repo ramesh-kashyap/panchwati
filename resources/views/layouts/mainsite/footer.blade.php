@@ -71,10 +71,12 @@
                                                 class="title-section-footer section-heading-jost-size20 fw-600 text-pri2-color">
                                                 Explore</h3>
                                             <ul class="list-menu-1 text-decs">
-                                                <li><a href="services.html">Brangding Design</a> </li>
-                                                <li><a href="services.html">Ui/ux Designing</a> </li>
-                                                <li><a href="services.html">Maek Elements</a> </li>
-                                                <li><a href="services.html">Graphics Design</a> </li>
+                                                <li><a href="{{route('Index')}}">Home</a> </li>
+                                                <li><a href="{{route('blog-details')}}">Blog Details</a> </li>
+                                                <li><a href="{{route('services')}}">Service</a> </li>
+                                                <li><a href="{{route('contact-us')}}">Contact</a> </li>
+                                                <li><a href="{{route('about-us')}}">About Us</a> </li>
+                                                
                                             </ul>
                                         </div>
                                     </div>

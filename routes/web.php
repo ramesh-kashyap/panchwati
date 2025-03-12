@@ -57,6 +57,7 @@ Route::get('/register_sucess', [App\Http\Controllers\Register::class, 'index'])-
 Route::get('/Index', [App\Http\Controllers\FrontController::class, 'index'])->name('Index');
 Route::get('/about-us', [App\Http\Controllers\FrontController::class, 'about'])->name('about-us');
 Route::get('/services', [App\Http\Controllers\FrontController::class, 'services'])->name('services');
+Route::get('/blog-details', [App\Http\Controllers\FrontController::class, 'Blog'])->name('blog-details');
 Route::get('/contact-us', [App\Http\Controllers\FrontController::class, 'contact'])->name('contact-us');
 Route::get('/faq', [App\Http\Controllers\FrontController::class, 'faq'])->name('faq');
 Route::get('/start', [App\Http\Controllers\FrontController::class, 'aitrading'])->name('start');
@@ -158,6 +159,7 @@ Route::get('/gap-margin-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'g
 
 //tickets
 Route::get('/ticket',[App\Http\Controllers\UserPanel\Tickets::class,'ticket'])->name('user.ticket');
+Route::get('/ticket-status',[App\Http\Controllers\UserPanel\Tickets::class,'ticketStatus'])->name('user.ticket-status');
 Route::get('/GenerateTicket',[App\Http\Controllers\UserPanel\Tickets::class,'GenerateTicket'])->name('user.GenerateTicket');
 Route::post('/SubmitTicket',[App\Http\Controllers\UserPanel\Tickets::class,'SubmitTicket'])->name('user.SubmitTicket');
 Route::get('/SupportMessage',[App\Http\Controllers\UserPanel\Tickets::class,'SupportMessage'])->name('user.SupportMessage');

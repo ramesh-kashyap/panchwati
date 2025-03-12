@@ -26,7 +26,7 @@
                         <div class="contact-left">
                             <h3 class="section-subtitle mg-bottom-22">GET IN TOUCH</h3>
                             <h2 class="section-title mg-bottom-15">We want to share our locationto find us easily.</h2>
-                            <p class="section-desc mg-bottom-60">Lorem ipsum dolor sit amet, conset etur sadipscing elitr, sed diam noket numy eirmod tempor </p>
+                            <p class="section-desc mg-bottom-60">Farming is not just a job; it’s a way of life.</p>
                             <div class="address-box mg-bottom30">
                                 <div class="contact-location icon-map"></div>
                                 <div class="info text-pri2-color">

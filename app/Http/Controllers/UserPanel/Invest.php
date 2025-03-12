@@ -19,7 +19,10 @@ class Invest extends Controller
 
   public function depositStatus()
   {
-      return view('user.invest.depositstatus');
+    $invests = Investment::paginate(10);  // Fetch all records using Eloquent
+
+    return view('user.invest.depositstatus', compact('invests'));
+      
   }
 
   private $downline = "";

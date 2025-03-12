@@ -1,24 +1,24 @@
 @include('layouts.mainsite.header')
 
 <div class="page-title">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="inner-title">
-                        <div class="overlay-image"></div>
-                        <div class="banner-title">
-                            <div class="page-title-heading">
-                                Faq
-                            </div>
-                            <div class="page-title-content link-style6">
-                                <span><a class="home" href="index.html">Home</a></span><span class="page-title-content-inner">Faq</span>
-                            </div>
-                        </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="inner-title">
+                <div class="overlay-image"></div>
+                <div class="banner-title">
+                    <div class="page-title-heading">
+                        Faq
                     </div>
-
+                    <div class="page-title-content link-style6">
+                        <span><a class="home" href="index.html">Home</a></span><span class="page-title-content-inner">Faq</span>
+                    </div>
                 </div>
-
             </div>
+
         </div>
+
+    </div>
+</div>
 <section class="flat-faq">
     <div class="container">
         <div class="row">
