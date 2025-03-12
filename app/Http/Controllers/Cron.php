@@ -30,6 +30,111 @@ public function tradeAmt()
   User::where('id','>=',0)->update(['tradeAmt' => 0]);
 }
 
+
+
+
+
+public function calculateRoi_income()
+{
+    $investments = Investment::where('roiCandition', 0)->where('status', 'Active')->get();
+
+    foreach ($investments as $investment) {
+        $amount = $investment->amount;
+        $roiAmount = ($amount * 5) / 100; // 5% Monthly ROI
+
+
+        $roiCount = Income::where('invest_id', $investment->id)
+            ->where('remarks', 'ROI Bonus')
+            ->sum('comm');
+
+        $today = date("Y-m-d");
+        $todayRoiCount = Income::where('invest_id', $investment->id)
+            ->where('remarks', 'ROI Bonus')
+            ->where('ttime', $today)
+            ->count();
+
+        if ($todayRoiCount <= 0 && $today >= $investment->sdate) {
+            echo "ID:" . $investment->user_id_fk . " Roi:" . $roiAmount . "<br>";
+            $this->add_level_income($investment->user_id, $roiAmount);
+
+            Income::create([
+                'user_id' => $investment->user_id,
+                'user_id_fk' => $investment->user_id_fk,
+                'amt' => $investment->amount,
+                'comm' => $roiAmount,
+                'level' => 0,
+                'ttime' => date("Y-m-d"),
+                'invest_id' => $investment->id,
+                'remarks' => 'ROI Bonus'
+            ]);
+        }
+    }
+}
+
+public function add_level_income($user_id, $amt)
+{
+    $levelPercentages = [
+        1 => 15, 2 => 10, 3 => 8, 4 => 5, 5 => 4,
+        6 => 4, 7 => 4, 8 => 3, 9 => 3, 10 => 3,
+        11 => 3, 12 => 3
+    ];
+
+    for ($i = 13; $i <= 19; $i++) {
+        $levelPercentages[$i] = 2;
+    }
+
+    for ($i = 20; $i <= 30; $i++) {
+        $levelPercentages[$i] = 1;
+    }
+
+    $user = User::find($user_id);
+    if (!$user) return false;
+
+    $fullname = $user->name;
+    $rname = $user->username;
+    $amount = $amt / 100;
+    $currentUserId = $user_id;
+    $cnt = 1;
+
+    while ($currentUserId && $currentUserId != "1" && $cnt <= 30) {
+        $sponsorData = User::where('id', $currentUserId)->first();
+        if (!$sponsorData) break;
+
+        $sponsor = $sponsorData->sponsor;
+        $sponsorStatus = User::where('id', $sponsor)->first();
+        $sponsorCount = User::where('sponsor', $sponsor)->where('active_status', 'Active')->count("id");
+
+        $pp = 0;
+        if ($sponsorStatus && $sponsorStatus->active_status == "Active") {
+            if (($cnt >= 13 && $cnt <= 19 && $sponsorCount >= 2) || 
+                ($cnt >= 20 && $cnt <= 30 && $sponsorCount >= 3) || 
+                ($cnt <= 12)) 
+            {
+                $pp = ($amount * $levelPercentages[$cnt]);
+            }
+        }
+
+        if ($sponsorStatus && $sponsorStatus->id > 0 && $cnt <= 30 && $pp > 0) {
+            Income::create([
+                'user_id' => $sponsorStatus->id,
+                'user_id_fk' => $sponsorStatus->username,
+                'amt' => $amt,
+                'comm' => $pp,
+                'remarks' => 'Team Commission',
+                'level' => $cnt,
+                'rname' => $rname,
+                'fullname' => $fullname,
+                'ttime' => date("Y-m-d"),
+            ]);
+        }
+
+        $currentUserId = $sponsorData->sponsor;
+        $cnt++;
+    }
+    return true;
+}
+
+
 public function generate_roi()
 {  
 

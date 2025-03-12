@@ -27,16 +27,28 @@
                     <div>
                         <p class="text-warning">These are the default withdraw details, kindly ensure your details are correct</p>
 
-                        <form method="POST" action="">
+                        <form method="POST" action="{{route('user.bank_details')}}">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label">USDT (TRC-20)</label>
-                                <input type="text" class="form-control" value="{{Auth::user()->usdtTrc20}}" placeholder="Enter Wallet Address" name="usdtTrc20">
+                                <label class="form-label">Account No</label>
+                                <input type="number" class="form-control" value="" placeholder="Enter Account Number" name="account_no">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">IFSC Code</label>
+                                <input type="text" class="form-control" value="" placeholder="Enter Ifsc Code" name="ifsc_code">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Bank Name</label>
+                                <input type="text" class="form-control" value="" placeholder="Enter Bank Name" name="bank_name">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Branch  Name</label>
+                                <input type="text" class="form-control" value="" placeholder="Enter Branch Name" name="branch_name">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">USDT (BEP20-20)</label>
-                                <input type="text" class="form-control"  value="{{Auth::user()->usdtBep20}}"  placeholder="Enter Wallet Address" name="usdtBep20">
+                                <input type="text" class="form-control"  value=""  placeholder="Enter Wallet Address" name="usdtBep20">
                             </div>
 
 
