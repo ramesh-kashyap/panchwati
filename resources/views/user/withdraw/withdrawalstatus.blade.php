@@ -34,7 +34,7 @@
 
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="table-body">
                                     @foreach ($withdraws as $key => $withdraw)
 
 

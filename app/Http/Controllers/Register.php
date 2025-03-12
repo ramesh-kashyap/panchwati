@@ -50,7 +50,7 @@ class Register extends Controller
             $validation =  Validator::make($request->all(), [
                 'email' => 'required',
                 'name' => 'required',
-                // 'username' => 'required',
+                'username' => 'required',
                 'password' => 'required|confirmed|min:5',
                 'sponsor' => 'required|exists:users,username',
                 // 'phone' => 'required|numeric|min:10'
@@ -81,7 +81,9 @@ class Register extends Controller
 
             $data['name'] = $post_array['name'];
             $data['phone'] = $post_array['phone'];
-            $data['username'] = $username;
+            $data['username'] = $post_array['username'] ?? 'user' . time();
+
+            // $data['username'] = $username;
             $data['email'] = $post_array['email'];
             $data['password'] =   Hash::make($post_array['password']);
             $data['tpassword'] =   Hash::make($tpassword);
@@ -104,6 +106,7 @@ class Register extends Controller
             $registered_user_id = $user_data['id'];
             $user = User::find($registered_user_id);
             // Auth::loginUsingId($registered_user_id);
+
 
             sendEmail($user->email, 'Welcome to ' . siteName(), [
                 'name' => $user->name,

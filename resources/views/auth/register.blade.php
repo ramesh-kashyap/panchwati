@@ -41,7 +41,7 @@
 
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Name</strong></label>
-                                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}">
+                                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required>
                                             @error('name')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -49,15 +49,15 @@
 
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" name="email" placeholder="Email ID" value="{{ old('email') }}">
+                                            <input type="email" class="form-control" name="email" placeholder="Email ID" value="{{ old('email') }}" required>
                                             @error('email')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="mb-1"><strong>Referal ID</strong></label>
-                                            <input type="text" class="form-control" name="sponsor" id="sponsor" placeholder="Referal ID" value="{{ old('sponsor', request('ref')) }}">
+                                            <label class="mb-1"><strong>Referral ID</strong></label>
+                                            <input type="text" class="form-control" name="sponsor" id="sponsor" placeholder="Referral ID" value="{{ old('sponsor', request('ref')) }}" required>
                                             @error('sponsor')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -65,21 +65,23 @@
 
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" name="password" placeholder="Password" value="{{ old('password') }}">
+                                            <input type="password" class="form-control" name="password" placeholder="Password" required>
                                             @error('password')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
+
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Confirm Password</strong></label>
-                                            <input type="password" class="form-control" name="password_confirmation" placeholder="Password" value="{{ old('password') }}">
-                                            @error('password')
+                                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
+                                            @error('password_confirmation')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
+
                                         <div class="form-group" id="otpInput" style="display: none;">
                                             <label class="mb-1"><strong>OTP</strong></label>
-                                            <input type="number" class="form-control" placeholder="Code" name="otp" value="{{ old('otp') }}">
+                                            <input type="number" class="form-control" placeholder="Code" name="otp">
                                             @error('otp')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror

@@ -32,7 +32,7 @@
 
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="table-body">
 
                                     <?php if (is_array($level_income) || is_object($level_income)) { ?>
 

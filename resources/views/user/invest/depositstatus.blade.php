@@ -11,7 +11,7 @@
                         <h4 class="card-title">Deposit Status</h4>
                         <div class="header-right">
                             <div class="input-group search-area ms-auto d-inline-flex">
-                                <input type="text" class="form-control" id="search-input" placeholder="Search here">
+                                <input type="text" class="form-control"id="search-input" placeholder="Search here">
                                 <div class="input-group-append">
                                     <button type="button" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
                                 </div>
@@ -34,7 +34,7 @@
 
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="table-body">
                                     @foreach ($invests as $key => $withdraw)
 
 
